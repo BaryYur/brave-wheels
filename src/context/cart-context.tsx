@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 
 import { Bike } from "../types";
 
+const mainPath = import.meta.env.VITE_API_PATH;
+
 type CartContextTypes = {
   getCartBikeItems: (ids: string[]) => Promise<"success" | "error">;
   fetchingCartItems: () => void;
@@ -24,8 +26,6 @@ const CartContext = React.createContext({
   deleteCartItem: (id) => {},
   addLocalQuantity: () => {},
 } as CartContextTypes);
-
-const mainPath = "https://bicycleapi.onrender.com/api";
 
 export const CartContextProvider = ({ children } : { children: React.ReactNode }) => {
   const [cartBikes, setCartBikes] = useState<Bike[]>([]);

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 
 import { Bike } from "../types";
 
+const mainPath = import.meta.env.VITE_API_PATH;
+
 type BikeContextTypes = {
   currentBikes: Bike[];
   getAllBikesByPagination: (size: string, page: string) => void;
@@ -26,8 +28,6 @@ const BikeContext = React.createContext({
   getFilteredBikes: (filters) => {},   // @ts-ignore
   searchBikeItems: (text) => {},
 } as BikeContextTypes);
-
-const mainPath = "https://bicycleapi.onrender.com/api";
 
 export const BikeContextProvider = ({ children } : { children: React.ReactNode }) => {
   const [bike, setBike] = useState<Bike | null>(null);
