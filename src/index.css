@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1000px) {
+  .main-carousel {
+    padding: 0 30px 30px 30px;
+  }
+}
+
+/* slider */
+.slick-next,
+.slick-prev {
+ width: 44px;
+ height: 44px;
+ background-color: #B4AEAA;
+ border-radius: 10px;
+}
+
+.slick-next::before,
+.slick-prev::before {
+  display: none;
+}
+
+.slick-prev:hover, 
+.slick-prev:focus, 
+.slick-next:hover, 
+.slick-next:focus {
+  color: white; 
+  background: #FF6F1E; 
+}
+
+.slick-dots li {
+  width: 20px;
+  height: 7px;
+  border-radius: 10px;
+  background-color: #B4AEAA;
+}
+
+.slick-dots li button {
+  opacity: 0;
+}
+
+.slick-dots li.slick-active {
+  background-color: #FF6F1E;
+}
