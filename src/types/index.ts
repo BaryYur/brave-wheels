@@ -37,4 +37,5 @@ export type FilterTypes = {
   materialType: string[];
   wheelSize: string[];
   frameType: string[];
+  color: string;
 }

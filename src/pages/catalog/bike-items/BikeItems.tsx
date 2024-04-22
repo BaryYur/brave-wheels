@@ -4,7 +4,7 @@ import { useBreakpoint } from "../../../hooks";
 
 import BikeContext from "../../../context/bike-context";
 
-import { BikeCard } from "../../../components";
+import { BikeCard, Loader } from "../../../components";
 import { P, breakpoints, theme } from "../../../theme";
 import * as Elements from "./Elements";
 
@@ -105,22 +105,20 @@ export const BikeItems = () => {
   const breakpoint = useBreakpoint();
   const { currentBikes, catalogItemsLoading } = useContext(BikeContext);
 
-  const getGridHandler = (breakpoint: number) => {
-    if (breakpoint > breakpoints.tablet) {
-      return "repeat(4, 1fr)";
-    } else {
-      return "repeat(3, 1fr)";
-    }
-  }
+  // const getGridHandler = (breakpoint: number) => {
+  //   if (breakpoint > breakpoints.tablet) {
+  //     return "repeat(4, 1fr)";
+  //   } else {
+  //     return "repeat(3, 1fr)";
+  //   }
+  // }
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Elements.BikeItemsList
         sx={{
           marginTop: breakpoint < breakpoints.laptop ? "30px" : "0",
-          gridTemplateColumns: getGridHandler(breakpoint),
-          width: "100%",
-          gap: "10px",
+          // gridTemplateColumns: getGridHandler(breakpoint),
           // ...(breakpoint > breakpoints.tablet ? stylesForBigScreen : {}),
         }}
       >
@@ -132,16 +130,20 @@ export const BikeItems = () => {
               price={item.price}
               image={item.images[0]}
               bikeMainPath="/home"
-              styles={{ width: "100%", border: `1px solid ${theme.light.palette.grey}` , borderRadius: "10px" }}
+              styles={{ width: "240px", border: `1px solid ${theme.light.palette.grey}` , borderRadius: "10px" }}
             />
           </li>
         ))}
       </Elements.BikeItemsList>
 
-      <P style={{ textAlign: "center" }}>
+      <P style={{ textAlign: "center", marginTop: "50px" }}>
         {currentBikes.length === 0 && !catalogItemsLoading && <span>Нічого не знайдено</span>}
       </P>
-      <P style={{ textAlign: "center" }}>{catalogItemsLoading && <span>Завантаження...</span>}</P>
+      <Elements.LoaderBox>
+        {catalogItemsLoading &&
+          <Loader />
+        }
+      </Elements.LoaderBox>
     </div>
   );
 }

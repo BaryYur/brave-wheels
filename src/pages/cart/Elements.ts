@@ -25,6 +25,11 @@ export const CartItemWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   gap: 100px;
+  @media screen and (max-width: 1300px) {
+    width: 100%;
+    padding: 0 20px;
+    gap: 10px;
+  }
 `
 
 export const ItemImage = styled.div`
@@ -39,7 +44,7 @@ export const ItemImage = styled.div`
 export const CartItemTopBox = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   & h4 {
     display: block;
     width: 400px;
@@ -49,6 +54,16 @@ export const CartItemTopBox = styled.div`
   }
   & h4:hover a {
     opacity: 0.9;
+  }
+`
+
+export const NameAndQuantityBox = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.bigScreen}px) {
+    flex-direction: column;
+    gap: 20px;
   }
 `
 
@@ -109,5 +124,25 @@ export const DeleteCartItemButton = styled.div`
   transition: all 0.3s ease-in-out;
   &:hover {
     background-color: whitesmoke;
+  }
+`
+
+export const LoaderBox = styled.div``
+
+export const NoItemsBox = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 80px 20px;
+  p {
+    text-align: center;
+  }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding: 40px 20px;
+    svg {
+      width: 100px;
+    }
   }
 `

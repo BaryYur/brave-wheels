@@ -100,3 +100,17 @@ export const FilterButton = styled.button`
     width: 246px;
   }
 `
+
+export const FiltersButton = styled.button`
+  background-color: ${({ theme }) => theme.palette.orange};
+  color: ${({ theme }) => theme.palette.white};
+  width: 100%;
+  margin-top: -10px;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 16px 32px;
+  border-radius: 10px;
+`

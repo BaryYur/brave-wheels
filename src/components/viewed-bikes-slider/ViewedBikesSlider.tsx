@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import BikeContext from "../../context/bike-context";
 
 import { Container, SliderCarousel, BikeCard } from "../../components";
-import { H2, theme } from "../../theme";
+import { H2 } from "../../theme";
 import * as Elements from "./Elements";
 
 export const ViewedBikesSlider = () => {
@@ -24,6 +24,7 @@ export const ViewedBikesSlider = () => {
           image={item.images[0]}
           price={item.price}
           bikeMainPath="/home"
+          styles={{ width: "240px" }}
         />
       </Elements.SiderCardWrapper>
     ))}
@@ -33,7 +34,7 @@ export const ViewedBikesSlider = () => {
     <>
       {viewedBikes.length > 0 &&
         <Container>
-          <H2 style={{ textAlign: "center", color: theme.light.palette.brown, marginTop: "50px" }}>Нещодавно переглянуті</H2>
+          <H2 style={{ textAlign: "center", marginTop: "50px" }}>Нещодавно переглянуті</H2>
           {viewedBikes.length < 5 ? viewedItemsList :
             <div style={{ width: "96%", margin: "50px auto" }}>
               <SliderCarousel
@@ -81,6 +82,7 @@ export const ViewedBikesSlider = () => {
                     price={item.price}
                     bikeMainPath="/home"
                     inCarousel
+                    styles={{ maxWidth: "240px" }}
                   />
                 ))}
               </SliderCarousel>

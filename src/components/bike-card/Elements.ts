@@ -7,15 +7,16 @@ export const BikeCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
-  width: 240px;
-  
+  min-height: 362px;
 `
 
 export const BikeCardTop = styled(Link)`
   & img {
     display: block;
     width: 219px;
+    //width: 100%;
     height: 219px;
+    margin: 0 auto;
     object-fit: cover;
   }
   & p {

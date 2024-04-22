@@ -9,7 +9,7 @@ import BikeContext from "../../../context/bike-context";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { Checkbox } from "../../../components";
-import { P, Button, theme, breakpoints } from "../../../theme";
+import { P, theme, breakpoints } from "../../../theme";
 import { Slider } from "@mui/material";
 import * as Elements from "./Elements";
 
@@ -21,7 +21,7 @@ export const Filters = () => {
   const breakpoint = useBreakpoint();
   const navigate = useNavigate();
   const location = useLocation();
-  const { getFilteredBikes } = useContext(BikeContext);
+  const { getFilteredBikes, getFilterColors, filterColors } = useContext(BikeContext);
   const { scrollToTop } = useScrollToTop();
   const [price, setPrice] = useState<number[]>([1000, 40000]);
   const [openFilters, setOpenFilters] = useState(false);
@@ -34,6 +34,7 @@ export const Filters = () => {
     materialType: [],
     wheelSize: [],
     frameType: [],
+    color: "",
   });
 
   const changeCategoryHandler = (name: string) => {
@@ -115,6 +116,10 @@ export const Filters = () => {
       filters.frameType.forEach((type) => queryParams.append("frameType", type));
     }
 
+    if (filters.color !== "") {
+      queryParams.set("color", filters.color);
+    }
+
     if (price[0] !== 1000 || price[1] !== 40000) {
       queryParams.set("lowerBoundPrice", filters.minPrice.toString());
       queryParams.set("upperBoundPrice", filters.maxPrice.toString());
@@ -131,6 +136,7 @@ export const Filters = () => {
     }
 
     scrollToTop();
+    setOpenFilters(false);
   }
 
   useEffect(() => {
@@ -145,13 +151,14 @@ export const Filters = () => {
     const parseQueryString = (queryString: string) => {
       const params = new URLSearchParams(queryString);
       const parsedFilters = {
-        search: params.getAll("search")[0],
+        search: params.get("search") || "",
         bicycleType: params.getAll("bicycleType"),
         minPrice: params.get("lowerBoundPrice") || "",
         maxPrice: params.get("upperBoundPrice") || "",
         materialType: params.getAll("materialType"),
         wheelSize: params.getAll("wheelSize"),
         frameType: params.getAll("frameType"),
+        color: params.get("color") || "",
       };
 
       setPrice([Number(params.get("lowerBoundPrice")) || 1000, Number(params.get("upperBoundPrice")) || 40000]);
@@ -162,6 +169,7 @@ export const Filters = () => {
     const queryString = window.location.search;
 
     setFilters(parseQueryString(queryString));
+    getFilterColors();
   }, [location]);
 
   useEffect(() => {
@@ -223,28 +231,6 @@ export const Filters = () => {
                 <label htmlFor="electro">Електро</label>
               </Elements.FilterItem>
             </Elements.FiltersList>
-
-            {/*<Elements.FiltersList>*/}
-            {/*  <P>Акційні товари</P>*/}
-            {/*  <Elements.FilterItem>*/}
-            {/*    <Checkbox*/}
-            {/*      id="electro"*/}
-            {/*      name="categories"*/}
-            {/*      checked={filters.categories.includes("")}*/}
-            {/*      onChange={() => changeCategoryHandler("ELECTRO")}*/}
-            {/*    />*/}
-            {/*    <label htmlFor="1">З акцією</label>*/}
-            {/*  </Elements.FilterItem>*/}
-            {/*  <Elements.FilterItem>*/}
-            {/*    <Checkbox*/}
-            {/*      id="electro"*/}
-            {/*      name="categories"*/}
-            {/*      checked={filters.categories.includes("ELECTRO")}*/}
-            {/*      onChange={() => changeCategoryHandler("ELECTRO")}*/}
-            {/*    />*/}
-            {/*    <label htmlFor="1">Без акції</label>*/}
-            {/*  </Elements.FilterItem>*/}
-            {/*</Elements.FiltersList>*/}
 
             <Elements.FiltersList>
               <P>Ціна</P>
@@ -351,6 +337,39 @@ export const Filters = () => {
             </Elements.FiltersList>
 
             <Elements.FiltersList>
+              <P>Колір</P>
+              <ul style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                {filterColors.map(item => (
+                  <li key={item}>
+                    <button
+                      onClick={() => {
+                        if (filters.color !== item) {
+                          setFilters({
+                            ...filters,
+                            color: item,
+                          });
+                        } else {
+                          setFilters({
+                            ...filters,
+                            color: "",
+                          });
+                        }
+                      }}
+                      style={{
+                        width: "30px",
+                        height: "30px",
+                        backgroundColor: item,
+                        borderRadius: "5px",
+                        border: "2px solid grey",
+                        borderColor: filters.color === item ? "orange" : "grey",
+                      }}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </Elements.FiltersList>
+
+            <Elements.FiltersList>
             <P>Тип рами</P>
             <Elements.FilterItem>
               <Checkbox
@@ -373,7 +392,9 @@ export const Filters = () => {
           </Elements.FiltersList>
           </Elements.FilterBox>
 
-          <Button style={{ width: "100%", marginTop: "-10px" }} onClick={filterHandler}>Підібрати</Button>
+          <Elements.FiltersButton onClick={filterHandler}>
+            Підібрати
+          </Elements.FiltersButton>
         </Elements.FilterBoxMenuWrapper>
       }
 

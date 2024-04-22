@@ -17,6 +17,8 @@ type BikeContextTypes = {
   getFilteredBikes: (filters: string) => void;
   searchBikeItems: (text: string) => void;
   catalogItemsLoading: boolean;
+  getFilterColors: () => void;
+  filterColors: string[];
 }
 
 const BikeContext = React.createContext({
@@ -27,6 +29,7 @@ const BikeContext = React.createContext({
   getRecentlyViewedBikes: (ids) => {},  // @ts-ignore
   getFilteredBikes: (filters) => {},   // @ts-ignore
   searchBikeItems: (text) => {},
+  getFilterColors: () => {},
 } as BikeContextTypes);
 
 export const BikeContextProvider = ({ children } : { children: React.ReactNode }) => {
@@ -34,6 +37,7 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
   const [currentBikes, setCurrentBikes] = useState([]);
   const [viewedBikes, setViewedBikes] = useState<Bike[]>([]);
   const [catalogItemsLoading, setCatalogItemsLoading] = useState(false);
+  const [filterColors, setFilterColors] = useState<string[]>([]);
 
   const getBike = async (id: string) => {
     try {
@@ -108,6 +112,16 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
     }
   }
 
+  const getFilterColors = async () => {
+    try {
+      const { data } = await axios.get(`${mainPath}/bicycle/colors`);
+
+      setFilterColors(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <BikeContext.Provider
       value={{
@@ -121,6 +135,8 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
         getFilteredBikes,
         searchBikeItems,
         catalogItemsLoading,
+        getFilterColors,
+        filterColors,
       }}
     >
       {children}

@@ -7,3 +7,4 @@ export * from "./bike-card/BikeCard";
 export * from "./footer/Footer";
 export * from "./viewed-bikes-slider/ViewedBikesSlider";
 export * from "./inputs/Checkbox";
+export * from "./loader/Loader";

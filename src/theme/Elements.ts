@@ -164,6 +164,7 @@ export const H2 = styled.h2`
   color: ${({ theme }) => theme.palette.brown};
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}px) {
     font-size: 38px;
+    line-height: 38px;
   }
 `
 
