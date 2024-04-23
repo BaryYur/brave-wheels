@@ -8,17 +8,17 @@ import BikeContext from "../../context/bike-context";
 
 import { Container, BreadcrumbsList, ViewedBikesSlider } from "../../components";
 import { BikeItems } from "./bike-items/BikeItems";
-import { DefaultLink, H2, breakpoints, theme } from "../../theme";
+import { DefaultLink, H2, breakpoints } from "../../theme";
 import { Filters } from "./filters/Filters";
 
-import Stack from "@mui/material/Stack";
-import Pagination from "@mui/material/Pagination";
+// import Stack from "@mui/material/Stack";
+// import Pagination from "@mui/material/Pagination";
 
 import * as Elements from "./Elements";
 
 export const CatalogPage = () => {
   const location = useLocation();
-  const { getAllBikesByPagination, currentBikes } = useContext(BikeContext);
+  const { getAllBikesByPagination } = useContext(BikeContext);
   const breakpoint = useBreakpoint();
   const breadcrumbs = [
     <DefaultLink key="1" to="/home">
