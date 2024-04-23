@@ -53,40 +53,40 @@ export const CatalogPage = () => {
           <BikeItems />
         </div>
 
-        {currentBikes.length > 12 && location.search !== "" && <Stack
-            sx={{
-              margin: "40px 0",
-              "& ul": {
-                display: "flex",
-                justifyContent: "center"
-              }
-            }}
-          >
-            <Pagination
-              count={10}
-              variant="outlined"
-              shape="rounded"
-              sx={{
-                "& .MuiPaginationItem-root": {
-                  fontFamily: "Open Sans",
-                  fontWeight: "500",
-                  padding: "20px",
-                  borderRadius: "10px",
-                  "&.Mui-selected": {
-                    backgroundColor: theme.light.palette.orange,
-                    border: `1px solid ${theme.light.palette.orange}`,
-                    color: "white",
-                  },
-                  "&.Mui-selected:hover": {
-                    backgroundColor: theme.light.palette.orange,
-                    color: "white",
-                  },
-                },
-              }}
-              // onChange={(e, value) => paginationChangingHandler(e, value)}
-            />
-          </Stack>
-        }
+        {/*{currentBikes.length > 12 && location.search !== "" && <Stack*/}
+        {/*    sx={{*/}
+        {/*      margin: "40px 0",*/}
+        {/*      "& ul": {*/}
+        {/*        display: "flex",*/}
+        {/*        justifyContent: "center"*/}
+        {/*      }*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    <Pagination*/}
+        {/*      count={10}*/}
+        {/*      variant="outlined"*/}
+        {/*      shape="rounded"*/}
+        {/*      sx={{*/}
+        {/*        "& .MuiPaginationItem-root": {*/}
+        {/*          fontFamily: "Open Sans",*/}
+        {/*          fontWeight: "500",*/}
+        {/*          padding: "20px",*/}
+        {/*          borderRadius: "10px",*/}
+        {/*          "&.Mui-selected": {*/}
+        {/*            backgroundColor: theme.light.palette.orange,*/}
+        {/*            border: `1px solid ${theme.light.palette.orange}`,*/}
+        {/*            color: "white",*/}
+        {/*          },*/}
+        {/*          "&.Mui-selected:hover": {*/}
+        {/*            backgroundColor: theme.light.palette.orange,*/}
+        {/*            color: "white",*/}
+        {/*          },*/}
+        {/*        },*/}
+        {/*      }}*/}
+        {/*      // onChange={(e, value) => paginationChangingHandler(e, value)}*/}
+        {/*    />*/}
+        {/*  </Stack>*/}
+        {/*}*/}
       </Container>
 
       <ViewedBikesSlider />
