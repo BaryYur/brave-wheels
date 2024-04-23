@@ -127,7 +127,7 @@ export const Filters = () => {
 
     const queryString = window.location.search;
     const params = new URLSearchParams(queryString);
-    const search = params.getAll("search")[0] ?? "";
+    const search = params.get("search") || "";
 
     if (search !== "") {
       navigate(`/catalog?search=${search}&${queryParams.toString()}`);
@@ -360,7 +360,7 @@ export const Filters = () => {
                         height: "30px",
                         backgroundColor: item,
                         borderRadius: "5px",
-                        border: "2px solid grey",
+                        border: "1px solid grey",
                         borderColor: filters.color === item ? "orange" : "grey",
                       }}
                     />

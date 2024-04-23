@@ -140,6 +140,7 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.palette.grey};
   background: ${({ theme }) => theme.palette.white};
   transition: all 0.2s ease-in-out;
+  font-size: 17px;
   &:focus {
     border: 1px solid ${({ theme }) => theme.palette.orange};
   }

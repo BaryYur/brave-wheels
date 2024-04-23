@@ -6,6 +6,12 @@ export const SearchingBoxModal = styled.div`
   top: 110px;
   right: -53px;
   z-index: 2;
+  ul {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
   @media screen and (max-width: 835px) {
     width: calc(100% - 40px);
     left: 20px;

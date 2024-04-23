@@ -46,7 +46,7 @@ export const CatalogPage = () => {
             marginTop: "50px",
             marginBottom: "50px",
             display: breakpoint > breakpoints.tablet ? "flex" : "block",
-            gap: "30px",
+            gap: "12px",
           }}
         >
           <Filters />
