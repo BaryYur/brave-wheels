@@ -56,15 +56,18 @@ export const BikePage = () => {
   const { bike, getBike } = useContext(BikeContext);
   const { fetchingCartItems } = useContext(CartContext);
   const [isBikeInCart, setIsBikeInCart] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (params.id) {
+      setLoading(true);
+
       getBike(params.id)
         .then((result) => {
           if (result === "error") {
             navigate("/home");
           }
-        });
+        }).finally(() => setLoading(false));
     }
   }, [params.id]);
 
@@ -85,12 +88,12 @@ export const BikePage = () => {
     currency: "UAH",
   }).format(bike?.price || 0);
 
-  const checkIsViewdHandler = () => {
-    const viwedItemsStore = JSON.parse(localStorage.getItem("viewed-items-store") ||  "[]");
+  const checkIsViewedHandler = () => {
+    const viewedItemsStore = JSON.parse(localStorage.getItem("viewed-items-store") ||  "[]");
 
-    if (!viwedItemsStore.includes(params.id) && bike !== null) {
-      viwedItemsStore.push(params.id);
-      localStorage.setItem("viewed-items-store", JSON.stringify(viwedItemsStore));
+    if (!viewedItemsStore.includes(params.id) && bike !== null) {
+      viewedItemsStore.push(params.id);
+      localStorage.setItem("viewed-items-store", JSON.stringify(viewedItemsStore));
     }
   }
 
@@ -112,7 +115,7 @@ export const BikePage = () => {
   }
 
   useEffect(() => {
-    checkIsViewdHandler();
+    checkIsViewedHandler();
 
     if (bike !== null) {
       if (checkInCart(bike.id)) {
@@ -123,7 +126,7 @@ export const BikePage = () => {
     }
   }, [bike, isBikeInCart]);
 
-  if (bike === null) return <P style={{ paddingTop: "120px", textAlign: "center" }}>Завантаження...</P>;
+  if (bike === null || loading) return <P style={{ paddingTop: "120px", textAlign: "center" }}>Завантаження...</P>;
 
   return (
     <div style={{ paddingTop: "130px" }}>
