@@ -6,9 +6,9 @@ import { useScrollToTop } from "../../../hooks";
 
 import BikeContext from "../../../context/bike-context";
 
-import * as Elements from "./Elements";
-
 import { Button, Input, Modal, P } from "../../../theme";
+
+import * as Elements from "./Elements";
 
 export const SearchingForm = ({ setSearchIsOpen } : { setSearchIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const navigate = useNavigate();
@@ -36,6 +36,24 @@ export const SearchingForm = ({ setSearchIsOpen } : { setSearchIsOpen: React.Dis
       searchingHistory.unshift(searchingText.trim());
       localStorage.setItem("searching-history", JSON.stringify(searchingHistory));
     }
+  }
+
+  const chooseHistoryItemHandler = (text: string) => {
+    let searchingHistory: string[] = JSON.parse(localStorage.getItem("searching-history") || "[]");
+
+    searchingHistory = searchingHistory.filter(item => item !== text);
+    searchingHistory.unshift(text.trim());
+    localStorage.setItem("searching-history", JSON.stringify(searchingHistory));
+    navigate(`/catalog?search=${text.trim()}`);
+    setSearchIsOpen(false);
+    scrollToTop();
+  }
+
+  const deleteHistoryItem = (text: string) => {
+    const localHistory: string[] = JSON.parse(localStorage.getItem("searching-history") || "[]");
+
+    setSearchingHistory(searchingHistory.filter(item => item !== text));
+    localStorage.setItem("searching-history", JSON.stringify(localHistory.filter(item => item !== text)));
   }
 
   const submitSearchingHandler = (event: React.SyntheticEvent) => {
@@ -70,16 +88,21 @@ export const SearchingForm = ({ setSearchIsOpen } : { setSearchIsOpen: React.Dis
         {searchingHistory.length === 0 && <P style={{ fontSize: "14px" }}>Поки що нічого немає</P>}
         <ul
           style={{
-            display: "block",
             height: searchingHistory.length > 9 ? "200px" : "auto",
             overflowY: searchingHistory.length > 9 ? "auto" : "hidden",
           }}
         >
           {searchingHistory.map(item => (
-            <li
-              key={Math.random()}
-            >
+            <li key={Math.random()} onClick={() => chooseHistoryItemHandler(item)}>
               <P>{item}</P>
+              <button
+                onClick={(event) => {
+                  event.stopPropagation();
+                  deleteHistoryItem(item);
+                }}
+              >
+                &#10005;
+              </button>
             </li>
           ))}
         </ul>

@@ -126,7 +126,7 @@ export const BikePage = () => {
     }
   }, [bike, isBikeInCart]);
 
-  if (bike === null || loading) return <P style={{ paddingTop: "120px", textAlign: "center" }}>Завантаження...</P>;
+  if (bike === null || loading) return <P style={{ paddingTop: "140px", textAlign: "center" }}>Завантаження...</P>;
 
   return (
     <div style={{ paddingTop: "130px" }}>

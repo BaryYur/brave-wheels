@@ -8,9 +8,28 @@ export const SearchingBoxModal = styled.div`
   z-index: 2;
   ul {
     margin-top: 5px;
+    margin-left: -4px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+  }
+  ul li {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  ul li button {
+    opacity: 0;
+    padding: 2px 5px;
+  }
+  ul li:hover {
+    background-color: whitesmoke;
+  }
+  ul li:hover button {
+    opacity: 1;
   }
   @media screen and (max-width: 835px) {
     width: calc(100% - 40px);
