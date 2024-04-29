@@ -175,7 +175,7 @@ export const Filters = () => {
 
     setFilters(parseQueryString(queryString));
     getFilterColors();
-  }, [location]);
+  }, [location, minPrice, maxPrice]);
 
   useEffect(() => {
     const queryString = window.location.search;
