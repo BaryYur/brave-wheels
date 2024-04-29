@@ -139,7 +139,7 @@ export const BikeItems = () => {
       <P style={{ textAlign: "center", marginTop: "50px" }}>
         {currentBikes.length === 0 && !catalogItemsLoading && <span>Нічого не знайдено</span>}
       </P>
-      <Elements.LoaderBox>
+      <Elements.LoaderBox style={{ minHeight: catalogItemsLoading ? "200px" : "0" }}>
         {catalogItemsLoading &&
           <Loader />
         }

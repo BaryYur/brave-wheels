@@ -77,15 +77,38 @@ export const SearchingForm = ({ setSearchIsOpen } : { setSearchIsOpen: React.Dis
     <Elements.SearchingBoxModal onClick={(event) => event.stopPropagation()}>
       <Modal>
         <Elements.SearchingForm onSubmit={submitSearchingHandler}>
-          <Input
-            placeholder="Введіть ваш запит..."
-            value={searchingText}
-            onChange={(event) => setSearchingText(event.target.value)}
-          />
+          <div style={{ position: "relative", display: "flex" }}>
+            <Input
+              placeholder="Введіть ваш запит..."
+              value={searchingText}
+              onChange={(event) => setSearchingText(event.target.value)}
+              style={{ paddingRight: "40px" }}
+            />
+
+            {searchingText.length > 0 &&
+              <button
+                type="button"
+                style={{
+                  position: "absolute",
+                  right: "2px",
+                  top: "8px",
+                  fontSize: "20px",
+                  padding: "8px",
+                  width: "40px",
+                  borderRadius: "5px",
+                }}
+                onClick={() => {
+                  setSearchingText("");
+                }}
+              >
+                &#10005;
+              </button>
+            }
+          </div>
           <Button type="submit">Знайти</Button>
         </Elements.SearchingForm>
-        <P style={{ fontWeight: "600", marginTop: "8px" }}>Історія пошуку</P>
-        {searchingHistory.length === 0 && <P style={{ fontSize: "14px" }}>Поки що нічого немає</P>}
+        <P style={{fontWeight: "600", marginTop: "8px"}}>Історія пошуку</P>
+        {searchingHistory.length === 0 && <P style={{fontSize: "14px"}}>Поки що нічого немає</P>}
         <ul
           style={{
             height: searchingHistory.length > 9 ? "200px" : "auto",

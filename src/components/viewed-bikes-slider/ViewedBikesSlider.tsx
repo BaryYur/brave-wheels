@@ -20,6 +20,7 @@ export const ViewedBikesSlider = () => {
       <Elements.SiderCardWrapper key={item.id} style={{ display: "flex" }}>
         <BikeCard
           id={item.id ?? ""}
+          key={item.id ?? Math.random()}
           name={item.name}
           image={item.images[0]}
           price={item.price}
@@ -77,6 +78,7 @@ export const ViewedBikesSlider = () => {
                 {viewedBikes.map(item => (
                   <BikeCard
                     id={item.id ?? ""}
+                    key={item.id ?? Math.random()}
                     name={item.name}
                     image={item.images[0]}
                     price={item.price}

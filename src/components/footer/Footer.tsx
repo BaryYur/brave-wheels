@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Container } from "../../components";
 import { P, H4 } from "../../theme";
 
-import {BIKES_INFO, CLIENTS_INFO, INFORMATION, TELEPHONE_CONTACT} from "./data";
+import { BIKES_INFO, CLIENTS_INFO, INFORMATION, TELEPHONE_CONTACT } from "./data";
 
 import * as Elements from "./Elements";
 

@@ -2,7 +2,12 @@ import { useState, useEffect, useContext } from "react";
 
 import { FilterTypes } from "../../../types";
 
-import { useBreakpoint, useScrollToTop } from "../../../hooks";
+import {
+  useBreakpoint,
+  useGetMaxPrice,
+  useGetMinPrice,
+  useScrollToTop
+} from "../../../hooks";
 
 import BikeContext from "../../../context/bike-context";
 
@@ -16,14 +21,14 @@ import * as Elements from "./Elements";
 import { filtersMenuIcon } from "../../../assets";
 
 export const Filters = () => {
-  const minPrice = 1000;
-  const maxPrice = 40000;
   const breakpoint = useBreakpoint();
   const navigate = useNavigate();
   const location = useLocation();
   const { getFilteredBikes, getFilterColors, filterColors } = useContext(BikeContext);
   const { scrollToTop } = useScrollToTop();
-  const [price, setPrice] = useState<number[]>([1000, 40000]);
+  const minPrice = useGetMinPrice();
+  const maxPrice = useGetMaxPrice();
+  const [price, setPrice] = useState<number[]>([minPrice, maxPrice]);
   const [openFilters, setOpenFilters] = useState(false);
 
   const [filters, setFilters] = useState<FilterTypes>({
@@ -120,7 +125,7 @@ export const Filters = () => {
       queryParams.set("color", filters.color);
     }
 
-    if (price[0] !== 1000 || price[1] !== 40000) {
+    if (price[0] !== minPrice || price[1] !== maxPrice) {
       queryParams.set("lowerBoundPrice", filters.minPrice.toString());
       queryParams.set("upperBoundPrice", filters.maxPrice.toString());
     }
@@ -161,7 +166,7 @@ export const Filters = () => {
         color: params.get("color") || "",
       };
 
-      setPrice([Number(params.get("lowerBoundPrice")) || 1000, Number(params.get("upperBoundPrice")) || 40000]);
+      setPrice([Number(params.get("lowerBoundPrice")) || minPrice, Number(params.get("upperBoundPrice")) || maxPrice]);
 
       return parsedFilters;
     };
@@ -173,7 +178,11 @@ export const Filters = () => {
   }, [location]);
 
   useEffect(() => {
-    if (location.search !== "") {
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const page = params.get("page");
+
+    if (location.search !== "" && page === null) {
       getFilteredBikes(location.search);
     }
   }, [location]);

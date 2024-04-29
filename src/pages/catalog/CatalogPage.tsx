@@ -1,24 +1,26 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { useBreakpoint } from "../../hooks";
+import { useBreakpoint, useScrollToTop } from "../../hooks";
 
 import BikeContext from "../../context/bike-context";
 
 import { Container, BreadcrumbsList, ViewedBikesSlider } from "../../components";
 import { BikeItems } from "./bike-items/BikeItems";
-import { DefaultLink, H2, breakpoints } from "../../theme";
+import { DefaultLink, H2, breakpoints, theme } from "../../theme";
 import { Filters } from "./filters/Filters";
 
-// import Stack from "@mui/material/Stack";
-// import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import Pagination from "@mui/material/Pagination";
 
 import * as Elements from "./Elements";
 
 export const CatalogPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { getAllBikesByPagination } = useContext(BikeContext);
+  const { scrollToTop } = useScrollToTop();
   const breakpoint = useBreakpoint();
   const breadcrumbs = [
     <DefaultLink key="1" to="/home">
@@ -29,11 +31,39 @@ export const CatalogPage = () => {
     </DefaultLink>,
   ];
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsCounter = 15;
+
+  const paginationChangeHandler = (value: number) => {
+    setCurrentPage(value);
+    getAllBikesByPagination("12", (value - 1).toString());
+    navigate(`${location.pathname}?page=${value}`);
+    scrollToTop();
+  }
+
   useEffect(() => {
-    if (location.search === "") {
-      getAllBikesByPagination("100", "0");
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const page = params.get("page");
+
+    if (location.search === "" && page === null) {
+      getAllBikesByPagination("12", "0");
+    } else if (location.search !== "" && page !== null) {
+      getAllBikesByPagination("12", (Number(page) - 1).toString());
     }
-  }, [location]);
+
+    if (
+      Number(page) > Math.floor((itemsCounter / 12) + 1)
+    ) {
+      setCurrentPage(1);
+    } else {
+      setCurrentPage(Number(page));
+    }
+  }, [location, currentPage]);
+
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  const pathPage = params.get("page");
 
   return (
     <Elements.CatalogWrapper>
@@ -44,7 +74,6 @@ export const CatalogPage = () => {
         <div
           style={{
             marginTop: "50px",
-            marginBottom: "50px",
             display: breakpoint > breakpoints.tablet ? "flex" : "block",
             gap: "12px",
           }}
@@ -53,40 +82,43 @@ export const CatalogPage = () => {
           <BikeItems />
         </div>
 
-        {/*{currentBikes.length > 12 && location.search !== "" && <Stack*/}
-        {/*    sx={{*/}
-        {/*      margin: "40px 0",*/}
-        {/*      "& ul": {*/}
-        {/*        display: "flex",*/}
-        {/*        justifyContent: "center"*/}
-        {/*      }*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <Pagination*/}
-        {/*      count={10}*/}
-        {/*      variant="outlined"*/}
-        {/*      shape="rounded"*/}
-        {/*      sx={{*/}
-        {/*        "& .MuiPaginationItem-root": {*/}
-        {/*          fontFamily: "Open Sans",*/}
-        {/*          fontWeight: "500",*/}
-        {/*          padding: "20px",*/}
-        {/*          borderRadius: "10px",*/}
-        {/*          "&.Mui-selected": {*/}
-        {/*            backgroundColor: theme.light.palette.orange,*/}
-        {/*            border: `1px solid ${theme.light.palette.orange}`,*/}
-        {/*            color: "white",*/}
-        {/*          },*/}
-        {/*          "&.Mui-selected:hover": {*/}
-        {/*            backgroundColor: theme.light.palette.orange,*/}
-        {/*            color: "white",*/}
-        {/*          },*/}
-        {/*        },*/}
-        {/*      }}*/}
-        {/*      // onChange={(e, value) => paginationChangingHandler(e, value)}*/}
-        {/*    />*/}
-        {/*  </Stack>*/}
-        {/*}*/}
+
+        {(pathPage !== null || location.search === "") && itemsCounter > 12 && <Stack
+            sx={{
+              margin: "30px 0 20px 0",
+              "& ul": {
+                display: "flex",
+                justifyContent: "center"
+              }
+            }}
+          >
+            <Pagination
+                                  // add all item length
+              count={Math.floor((itemsCounter / 12) + 1)}
+              variant="outlined"
+              shape="rounded"
+              sx={{
+                "& .MuiPaginationItem-root": {
+                  fontFamily: "Open Sans",
+                  fontWeight: "500",
+                  padding: "20px",
+                  borderRadius: "10px",
+                  "&.Mui-selected": {
+                    backgroundColor: theme.light.palette.orange,
+                    border: `1px solid ${theme.light.palette.orange}`,
+                    color: "white",
+                  },
+                  "&.Mui-selected:hover": {
+                    backgroundColor: theme.light.palette.orange,
+                    color: "white",
+                  },
+                },
+              }}
+              onChange={(_e, value) => paginationChangeHandler(value)}
+              defaultPage={Number(pathPage) || 1}
+            />
+          </Stack>
+        }
       </Container>
 
       <ViewedBikesSlider />
