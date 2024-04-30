@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useGetImage } from "../../hooks";
 
 import { Container } from "../../components";
-import { Input, Button } from "../../theme";
+import { Input, Button, H4 } from "../../theme";
 
 import { RadioGroup, FormControlLabel, Radio, Checkbox } from "@mui/material";
 
@@ -66,6 +66,7 @@ export const AdminPage = () => {
     weight: 0,
     wheelSize: 0,
   });
+  const [loading, setLoading] = useState(false);
 
   const bicycleTypeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -98,27 +99,52 @@ export const AdminPage = () => {
   const addBikeHandler = async (event: any) => {
     event.preventDefault();
 
+    setLoading(true);
+
     try {
       const body = {
         ...formData,
         images: [ image.toString().split(",")[1] ]
       }
 
-      console.log(body);
-
       await axios.post(`https://bicycleapi.onrender.com/api/bicycle/save`, body);
+
+      setFormData({
+        bicycleType: "MOUNTAIN",
+        brakeType: "",
+        brand: "",
+        color: "",
+        description: "",
+        frameType: "OPEN",
+        guarantee: 0,
+        materialType: "ALUMINIUM",
+        name: "",
+        price: 0,
+        quantity: 0,
+        sale: false,
+        weight: 0,
+        wheelSize: 0,
+      });
+
+      // const fileInput = document.getElementById("bike-image");
+      //
+      // if (fileInput) {
+      //   fileInput.value = "";
+      // }
+      alert("Successfully added");
     } catch (error) {
       alert("Something went wrong");
-
-      console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
     <div style={{ paddingTop: "180px", paddingBottom: "100px", fontFamily: "sans-serif" }}>
       <Container>
+        <H4 style={{ marginBottom: "20px" }}>Adding bike</H4>
         <form onSubmit={addBikeHandler}>
-          <div style={{display: "flex", gap: "20px", paddingBottom: "10px", flexWrap: "wrap", alignItems: "flex-end", width: "420px" }}>
+          <div style={{display: "flex", gap: "20px", paddingBottom: "10px", flexWrap: "wrap", alignItems: "flex-end", width: "500px" }}>
             <Input
               placeholder="Name"
               name="name"
@@ -129,7 +155,7 @@ export const AdminPage = () => {
               })}
             />
             <Input
-              placeholder="color"
+              placeholder="Color (hex color only)"
               name="Color"
               value={formData.color}
               onChange={(event) => setFormData({
@@ -211,13 +237,17 @@ export const AdminPage = () => {
                 })}
               />
             </div>
-            <Input
-              name="image"
-              type="file"
-              accept="image/png, image/svg+xml, image/jpeg, image/jpg"
-              onChange={changeImage}
-              style={{ padding: "7px 10px" }}
-            />
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <label style={{marginBottom: "5px"}}>Image</label>
+              <Input
+                id="bike-image"
+                name="image"
+                type="file"
+                accept="image/png, image/svg+xml, image/jpeg, image/jpg"
+                onChange={changeImage}
+                style={{ padding: "7px 10px" }}
+              />
+            </div>
           </div>
           <div style={{display: "flex", gap: "20px"}}>
             <RadioGroup
@@ -338,7 +368,13 @@ export const AdminPage = () => {
             ></textarea>
           </div>
 
-          <Button type="submit" style={{padding: "10px", width: "120px", marginTop: "20px"}}>Add</Button>
+          <Button
+            type="submit"
+            disabled={loading}
+            style={{padding: "10px", width: "120px", marginTop: "20px"}}
+          >
+            {loading ? <span>Loading...</span> : <span>Add</span>}
+          </Button>
         </form>
       </Container>
     </div>

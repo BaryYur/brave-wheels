@@ -16,6 +16,10 @@ import Pagination from "@mui/material/Pagination";
 
 import * as Elements from "./Elements";
 
+import axios from "axios";
+
+const mainPath = import.meta.env.VITE_API_PATH;
+
 export const CatalogPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,13 +36,23 @@ export const CatalogPage = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsCounter = 15;
+  const [itemsCounter, setItemsCounter] = useState(0);
 
   const paginationChangeHandler = (value: number) => {
     setCurrentPage(value);
     getAllBikesByPagination("12", (value - 1).toString());
     navigate(`${location.pathname}?page=${value}`);
     scrollToTop();
+  }
+
+  const getItemsCounter = async () => {
+    try {
+      const { data } = await axios.get(`${mainPath}/bicycle/page-request?size=100000&page=0`);
+
+      setItemsCounter(data.content.length);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -59,6 +73,8 @@ export const CatalogPage = () => {
     } else {
       setCurrentPage(Number(page));
     }
+
+    getItemsCounter();
   }, [location, currentPage]);
 
   const queryString = window.location.search;

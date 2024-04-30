@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 
 import CartContext from "../../context/cart-context";
+// import BikeContext from "../../context/bike-context";
 
 import { useScrollToTop } from "../../hooks";
 
@@ -34,6 +35,7 @@ export const BikeCard: React.FC<BikeCardProps> = ({
   }).format(price);
   const { scrollToTop } = useScrollToTop();
   const { fetchingCartItems, getCartBikeItems, cartBikes } = useContext(CartContext);
+  // const { deleteBike } = useContext(BikeContext);
   const [isBikeInCart, setIsBikeInCart] = useState(false);
 
   const addToCartHandler = (id: string) => {
@@ -118,6 +120,8 @@ export const BikeCard: React.FC<BikeCardProps> = ({
           }
         </Button>
       </Elements.BikeCardBottom>
+
+      {/*<button onClick={() => deleteBike(id)}>delete</button>*/}
     </Elements.BikeCard>
   );
 }
