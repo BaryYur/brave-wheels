@@ -131,7 +131,7 @@ export const AdminPage = () => {
       // if (fileInput) {
       //   fileInput.value = "";
       // }
-      alert("Successfully added");
+      // alert("Successfully added");
     } catch (error) {
       alert("Something went wrong");
     } finally {
