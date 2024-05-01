@@ -6,7 +6,11 @@ import { useBreakpoint, useScrollToTop } from "../../hooks";
 
 import BikeContext from "../../context/bike-context";
 
-import { Container, BreadcrumbsList, ViewedBikesSlider } from "../../components";
+import {
+  Container,
+  BreadcrumbsList,
+  ViewedBikesSlider,
+} from "../../components";
 import { BikeItems } from "./bike-items/BikeItems";
 import { DefaultLink, H2, breakpoints, theme } from "../../theme";
 import { Filters } from "./filters/Filters";
@@ -43,17 +47,19 @@ export const CatalogPage = () => {
     getAllBikesByPagination("12", (value - 1).toString());
     navigate(`${location.pathname}?page=${value}`);
     scrollToTop();
-  }
+  };
 
   const getItemsCounter = async () => {
     try {
-      const { data } = await axios.get(`${mainPath}/bicycle/page-request?size=100000&page=0`);
+      const { data } = await axios.get(
+        `${mainPath}/bicycle/page-request?size=100000&page=0`,
+      );
 
       setItemsCounter(data.content.length);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     const queryString = window.location.search;
@@ -66,9 +72,7 @@ export const CatalogPage = () => {
       getAllBikesByPagination("12", (Number(page) - 1).toString());
     }
 
-    if (
-      Number(page) > Math.floor((itemsCounter / 12) + 1)
-    ) {
+    if (Number(page) > Math.floor(itemsCounter / 12 + 1)) {
       setCurrentPage(1);
     } else {
       setCurrentPage(Number(page));
@@ -83,7 +87,7 @@ export const CatalogPage = () => {
 
   return (
     <Elements.CatalogWrapper>
-      <Container>
+      <Container styles={{ paddingBottom: "20px" }}>
         <BreadcrumbsList breadcrumbs={breadcrumbs} />
         <H2>Каталог</H2>
 
@@ -98,19 +102,19 @@ export const CatalogPage = () => {
           <BikeItems />
         </div>
 
-
-        {(pathPage !== null || location.search === "") && itemsCounter > 12 && <Stack
+        {(pathPage !== null || location.search === "") && itemsCounter > 12 && (
+          <Stack
             sx={{
-              margin: "30px 0 20px 0",
+              margin: "10px 0 20px 0",
               "& ul": {
                 display: "flex",
-                justifyContent: "center"
-              }
+                justifyContent: "center",
+              },
             }}
           >
             <Pagination
-                                  // add all item length
-              count={Math.floor((itemsCounter / 12) + 1)}
+              // add all item length
+              count={Math.floor(itemsCounter / 12 + 1)}
               variant="outlined"
               shape="rounded"
               sx={{
@@ -134,10 +138,10 @@ export const CatalogPage = () => {
               defaultPage={Number(pathPage) || 1}
             />
           </Stack>
-        }
+        )}
       </Container>
 
       <ViewedBikesSlider />
     </Elements.CatalogWrapper>
   );
-}
+};

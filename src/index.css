@@ -8,6 +8,10 @@
   outline: none;
 }
 
+body.active-body {
+  overflow-y: hidden;
+}
+
 a {
   text-decoration: none;
 }

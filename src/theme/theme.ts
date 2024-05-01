@@ -11,19 +11,20 @@ export const breakpoints = {
   tablet: 768,
   phone: 480,
   smallPhone: 360,
-}
+};
 
-const light= {
+const light = {
   palette,
-  gradient: "radial-gradient(38.29% 234.6% at 52.08% 56.11%, #554D47 0%, #1D1B19 100%)",
+  gradient:
+    "radial-gradient(38.29% 234.6% at 52.08% 56.11%, #554D47 0%, #1D1B19 100%)",
   breakpoints: breakpoints,
-}
+};
 
 const dark = {
   palette,
-}
+};
 
 export const theme = {
   light,
   dark,
-}
+};

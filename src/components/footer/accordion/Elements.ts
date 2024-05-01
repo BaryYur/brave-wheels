@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AccordionWrapper = styled.div``
+export const AccordionWrapper = styled.div``;
 
 export const AccordionHead = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const AccordionHead = styled.div`
   align-items: center;
   padding: 10px 0;
   cursor: pointer;
-`
+`;
 
 export const AccordionInfoBox = styled.div`
   display: grid;
@@ -21,4 +21,4 @@ export const AccordionInfoBox = styled.div`
     flex-direction: column;
     gap: 12px;
   }
-`
+`;

@@ -17,10 +17,10 @@ export const MainBikeInfoBox = styled.div`
     font-size: 20px;
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.laptop}px) {
-    gap: 20px; 
+    gap: 20px;
     & img {
       width: 360px;
-      height: 360px ;
+      height: 360px;
     }
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
@@ -34,7 +34,7 @@ export const MainBikeInfoBox = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 export const InfoBox = styled.div`
   display: flex;
@@ -46,8 +46,7 @@ export const InfoBox = styled.div`
     gap: 10px;
     align-items: flex-start;
   }
-  
-`
+`;
 
 export const ColorButton = styled.button`
   width: 64px;
@@ -55,7 +54,7 @@ export const ColorButton = styled.button`
   border: 1px solid ${({ theme }) => theme.palette.grey};
   border-radius: 5px;
   margin-top: 10px;
-`
+`;
 
 export const BenefitsContainer = styled.div`
   margin-top: 60px;
@@ -66,12 +65,12 @@ export const BenefitsContainer = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    
+
     & li {
       display: flex;
       gap: 30px;
       width: 400px;
-      
+
       & p {
         margin-top: 10px;
       }
@@ -80,7 +79,7 @@ export const BenefitsContainer = styled.div`
 
   @media screen and (max-width: 1323px) {
     ul {
-      width: 100%; 
+      width: 100%;
     }
   }
 
@@ -88,18 +87,18 @@ export const BenefitsContainer = styled.div`
     padding: 60px 20px;
     ul {
       flex-direction: column;
-      gap: 30px; 
+      gap: 30px;
     }
-    
+
     ul li {
       width: 100%;
     }
   }
-`
+`;
 
 export const DescriptionBox = styled.div`
   padding: 60px 0;
-`
+`;
 
 export const SpecificationsBox = styled.div`
   padding-bottom: 60px;
@@ -109,7 +108,7 @@ export const SpecificationsBox = styled.div`
   & ul li {
     display: flex;
     gap: 20px;
-    
+
     & div {
       border-top: 1px solid ${({ theme }) => theme.palette.grey};
     }
@@ -118,7 +117,7 @@ export const SpecificationsBox = styled.div`
       width: 30%;
       padding: 20px 0;
     }
-    
+
     & div:last-child {
       width: 70%;
       padding: 20px 0;
@@ -128,7 +127,7 @@ export const SpecificationsBox = styled.div`
   & ul li:last-child div {
     border-bottom: 1px solid ${({ theme }) => theme.palette.grey};
   }
-  
+
   @media screen and (max-width: 570px) {
     & ul li {
       & div:first-child {
@@ -140,4 +139,4 @@ export const SpecificationsBox = styled.div`
       }
     }
   }
-`
+`;

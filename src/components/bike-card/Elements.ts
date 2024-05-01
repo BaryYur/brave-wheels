@@ -8,7 +8,7 @@ export const BikeCard = styled.div`
   justify-content: space-between;
   padding: 10px;
   min-height: 362px;
-`
+`;
 
 export const BikeCardTop = styled(Link)`
   & img {
@@ -23,7 +23,7 @@ export const BikeCardTop = styled(Link)`
     margin-top: 10px;
     color: ${({ theme }) => theme.palette.brown};
   }
-`
+`;
 
 export const BikeCardBottom = styled.div`
   display: flex;
@@ -34,4 +34,4 @@ export const BikeCardBottom = styled.div`
     color: ${({ theme }) => theme.palette.orange};
     font-weight: 600;
   }
-`
+`;

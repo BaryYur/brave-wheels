@@ -19,4 +19,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       </CartContextProvider>
     </BikeContextProvider>
   </React.StrictMode>,
-)
+);

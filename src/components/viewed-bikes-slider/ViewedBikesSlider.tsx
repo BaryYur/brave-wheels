@@ -10,33 +10,39 @@ export const ViewedBikesSlider = () => {
   const { viewedBikes, getRecentlyViewedBikes } = useContext(BikeContext);
 
   useEffect(() => {
-    const ids = JSON.parse(localStorage.getItem("viewed-items-store") ||  "[]");
+    const ids = JSON.parse(localStorage.getItem("viewed-items-store") || "[]");
 
     getRecentlyViewedBikes(ids);
   }, []);
 
-  const viewedItemsList = <Elements.ViewdItemsList>
-    {viewedBikes.map(item => (
-      <Elements.SiderCardWrapper key={item.id} style={{ display: "flex" }}>
-        <BikeCard
-          id={item.id ?? ""}
-          key={item.id ?? Math.random()}
-          name={item.name}
-          image={item.images[0]}
-          price={item.price}
-          bikeMainPath="/home"
-          styles={{ width: "240px" }}
-        />
-      </Elements.SiderCardWrapper>
-    ))}
-  </Elements.ViewdItemsList>;
+  const viewedItemsList = (
+    <Elements.ViewdItemsList>
+      {viewedBikes.map(item => (
+        <Elements.SiderCardWrapper key={item.id} style={{ display: "flex" }}>
+          <BikeCard
+            id={item.id ?? ""}
+            key={item.id ?? Math.random()}
+            name={item.name}
+            image={item.images[0]}
+            price={item.price}
+            bikeMainPath="/home"
+            styles={{ width: "240px" }}
+          />
+        </Elements.SiderCardWrapper>
+      ))}
+    </Elements.ViewdItemsList>
+  );
 
   return (
     <>
-      {viewedBikes.length > 0 &&
+      {viewedBikes.length > 0 && (
         <Container>
-          <H2 style={{ textAlign: "center", marginTop: "50px" }}>Нещодавно переглянуті</H2>
-          {viewedBikes.length < 5 ? viewedItemsList :
+          <H2 style={{ textAlign: "center", marginTop: "50px" }}>
+            Нещодавно переглянуті
+          </H2>
+          {viewedBikes.length < 5 ? (
+            viewedItemsList
+          ) : (
             <div style={{ width: "96%", margin: "50px auto" }}>
               <SliderCarousel
                 dots={true}
@@ -49,21 +55,21 @@ export const ViewedBikesSlider = () => {
                     breakpoint: 1200,
                     settings: {
                       slidesToShow: 3,
-                    }
+                    },
                   },
                   {
                     breakpoint: 1000,
                     settings: {
                       slidesToShow: 3,
                       arrows: false,
-                    }
+                    },
                   },
                   {
                     breakpoint: 890,
                     settings: {
                       slidesToShow: 2,
                       arrows: false,
-                    }
+                    },
                   },
                   {
                     breakpoint: 660,
@@ -71,7 +77,7 @@ export const ViewedBikesSlider = () => {
                       slidesToShow: 1,
                       centerMode: false,
                       arrows: false,
-                    }
+                    },
                   },
                 ]}
               >
@@ -89,9 +95,9 @@ export const ViewedBikesSlider = () => {
                 ))}
               </SliderCarousel>
             </div>
-          }
+          )}
         </Container>
-      }
+      )}
     </>
   );
-}
+};

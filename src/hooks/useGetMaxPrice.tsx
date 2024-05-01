@@ -15,11 +15,11 @@ export const useGetMaxPrice = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getMaxPrice();
   }, []);
 
   return maxPrice;
-}
+};

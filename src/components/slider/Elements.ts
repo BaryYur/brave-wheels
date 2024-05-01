@@ -24,4 +24,4 @@ export const NavButton = styled.button`
       height: 24px;
     }
   }
-`
+`;

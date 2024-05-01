@@ -19,20 +19,24 @@ type BikeContextTypes = {
   catalogItemsLoading: boolean;
   getFilterColors: () => void;
   filterColors: string[];
-}
+};
 
 const BikeContext = React.createContext({
   // @ts-ignore
   getAllBikesByPagination: (size, page) => {}, // @ts-ignore
-  getBike: (id) => {}, // @ts-ignore
-  deleteBike: (id) => {}, // @ts-ignore
-  getRecentlyViewedBikes: (ids) => {},  // @ts-ignore
-  getFilteredBikes: (filters) => {},   // @ts-ignore
-  searchBikeItems: (text) => {},
+  getBike: id => {}, // @ts-ignore
+  deleteBike: id => {}, // @ts-ignore
+  getRecentlyViewedBikes: ids => {}, // @ts-ignore
+  getFilteredBikes: filters => {}, // @ts-ignore
+  searchBikeItems: text => {},
   getFilterColors: () => {},
 } as BikeContextTypes);
 
-export const BikeContextProvider = ({ children } : { children: React.ReactNode }) => {
+export const BikeContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [bike, setBike] = useState<Bike | null>(null);
   const [currentBikes, setCurrentBikes] = useState([]);
   const [viewedBikes, setViewedBikes] = useState<Bike[]>([]);
@@ -50,13 +54,15 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
       console.log(error);
       return "error";
     }
-  }
+  };
 
   const getAllBikesByPagination = async (size: string, page: string) => {
     setCatalogItemsLoading(true);
 
     try {
-      const { data } = await axios.get(`${mainPath}/bicycle/page-request?size=${size}&page=${page}`);
+      const { data } = await axios.get(
+        `${mainPath}/bicycle/page-request?size=${size}&page=${page}`,
+      );
 
       setCurrentBikes(data.content);
     } catch (error) {
@@ -64,7 +70,7 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
     } finally {
       setCatalogItemsLoading(false);
     }
-  }
+  };
 
   const deleteBike = async (id: string) => {
     try {
@@ -72,7 +78,7 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const getRecentlyViewedBikes = async (ids: string[]) => {
     try {
@@ -82,7 +88,7 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const getFilteredBikes = async (filters: string) => {
     setCatalogItemsLoading(true);
@@ -96,13 +102,15 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
     } finally {
       setCatalogItemsLoading(false);
     }
-  }
+  };
 
   const searchBikeItems = async (text: string) => {
     setCatalogItemsLoading(true);
 
     try {
-      const { data } = await axios.get(`${mainPath}/bicycle/search?input=${text}`);
+      const { data } = await axios.get(
+        `${mainPath}/bicycle/search?input=${text}`,
+      );
 
       setCurrentBikes(data);
     } catch (error) {
@@ -110,7 +118,7 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
     } finally {
       setCatalogItemsLoading(false);
     }
-  }
+  };
 
   const getFilterColors = async () => {
     try {
@@ -120,12 +128,12 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <BikeContext.Provider
       value={{
-        getAllBikesByPagination ,
+        getAllBikesByPagination,
         getBike,
         deleteBike,
         currentBikes,
@@ -142,6 +150,6 @@ export const BikeContextProvider = ({ children } : { children: React.ReactNode }
       {children}
     </BikeContext.Provider>
   );
-}
+};
 
 export default BikeContext;

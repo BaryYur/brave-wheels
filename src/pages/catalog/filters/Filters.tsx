@@ -6,7 +6,7 @@ import {
   useBreakpoint,
   useGetMaxPrice,
   useGetMinPrice,
-  useScrollToTop
+  useScrollToTop,
 } from "../../../hooks";
 
 import BikeContext from "../../../context/bike-context";
@@ -54,7 +54,7 @@ export const Filters = () => {
         bicycleType: [...filters.bicycleType, name],
       });
     }
-  }
+  };
 
   const changeMaterialHandler = (name: string) => {
     if (filters.materialType.includes(name)) {
@@ -68,7 +68,7 @@ export const Filters = () => {
         materialType: [...filters.materialType, name],
       });
     }
-  }
+  };
 
   const changeWheelHandler = (name: string) => {
     if (filters.wheelSize.includes(name)) {
@@ -82,7 +82,7 @@ export const Filters = () => {
         wheelSize: [...filters.wheelSize, name],
       });
     }
-  }
+  };
 
   const changeFrameTypeHandler = (name: string) => {
     if (filters.frameType.includes(name)) {
@@ -96,29 +96,35 @@ export const Filters = () => {
         frameType: [...filters.frameType, name],
       });
     }
-  }
+  };
 
   const priceChangeHandler = (_event: any, newValue: number | number[]) => {
     setPrice(newValue as number[]);
-  }
+  };
 
   const filterHandler = () => {
     const queryParams = new URLSearchParams();
 
     if (filters.bicycleType.length !== 0) {
-      filters.bicycleType.forEach((type) => queryParams.append("bicycleType", type));
+      filters.bicycleType.forEach(type =>
+        queryParams.append("bicycleType", type),
+      );
     }
 
     if (filters.wheelSize.length !== 0) {
-      filters.wheelSize.forEach((wheel) => queryParams.append("wheelSize", wheel));
+      filters.wheelSize.forEach(wheel =>
+        queryParams.append("wheelSize", wheel),
+      );
     }
 
     if (filters.materialType.length !== 0) {
-      filters.materialType.forEach((type) => queryParams.append("materialType", type));
+      filters.materialType.forEach(type =>
+        queryParams.append("materialType", type),
+      );
     }
 
     if (filters.frameType.length !== 0) {
-      filters.frameType.forEach((type) => queryParams.append("frameType", type));
+      filters.frameType.forEach(type => queryParams.append("frameType", type));
     }
 
     if (filters.color !== "") {
@@ -142,7 +148,7 @@ export const Filters = () => {
 
     scrollToTop();
     setOpenFilters(false);
-  }
+  };
 
   useEffect(() => {
     setFilters({
@@ -166,7 +172,10 @@ export const Filters = () => {
         color: params.get("color") || "",
       };
 
-      setPrice([Number(params.get("lowerBoundPrice")) || minPrice, Number(params.get("upperBoundPrice")) || maxPrice]);
+      setPrice([
+        Number(params.get("lowerBoundPrice")) || minPrice,
+        Number(params.get("upperBoundPrice")) || maxPrice,
+      ]);
 
       return parsedFilters;
     };
@@ -197,7 +206,8 @@ export const Filters = () => {
       {
         <Elements.FilterBoxMenuWrapper
           style={{
-            left: (openFilters || breakpoint > breakpoints.tablet) ? "0" : "-400px"
+            left:
+              openFilters || breakpoint > breakpoints.tablet ? "0" : "-400px",
           }}
         >
           <Elements.FilterBox>
@@ -247,7 +257,7 @@ export const Filters = () => {
                 <div>
                   <P style={{ fontWeight: "normal" }}>{price[0]}</P>
                 </div>
-                <div/>
+                <div />
                 <div>
                   <P style={{ fontWeight: "normal" }}>{price[1]}</P>
                 </div>
@@ -379,26 +389,26 @@ export const Filters = () => {
             </Elements.FiltersList>
 
             <Elements.FiltersList>
-            <P>Тип рами</P>
-            <Elements.FilterItem>
-              <Checkbox
-                id="closed"
-                name="frame-types"
-                checked={filters.frameType.includes("CLOSED")}
-                onChange={() => changeFrameTypeHandler("CLOSED")}
-              />
-              <label htmlFor="closed">Закрита</label>
-            </Elements.FilterItem>
-            <Elements.FilterItem>
-              <Checkbox
-                id="open"
-                name="frame-types"
-                checked={filters.frameType.includes("OPEN")}
-                onChange={() => changeFrameTypeHandler("OPEN")}
-              />
-              <label htmlFor="open">Відкрита</label>
-            </Elements.FilterItem>
-          </Elements.FiltersList>
+              <P>Тип рами</P>
+              <Elements.FilterItem>
+                <Checkbox
+                  id="closed"
+                  name="frame-types"
+                  checked={filters.frameType.includes("CLOSED")}
+                  onChange={() => changeFrameTypeHandler("CLOSED")}
+                />
+                <label htmlFor="closed">Закрита</label>
+              </Elements.FilterItem>
+              <Elements.FilterItem>
+                <Checkbox
+                  id="open"
+                  name="frame-types"
+                  checked={filters.frameType.includes("OPEN")}
+                  onChange={() => changeFrameTypeHandler("OPEN")}
+                />
+                <label htmlFor="open">Відкрита</label>
+              </Elements.FilterItem>
+            </Elements.FiltersList>
           </Elements.FilterBox>
 
           <Elements.FiltersButton onClick={filterHandler}>
@@ -414,4 +424,4 @@ export const Filters = () => {
       )}
     </Elements.FilterBoxWrapper>
   );
-}
+};

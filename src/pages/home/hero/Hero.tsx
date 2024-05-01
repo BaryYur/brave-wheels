@@ -15,7 +15,7 @@ export const Hero = () => {
       top: window.scrollY + 900,
       behavior: "smooth",
     });
-  }
+  };
 
   return (
     <Elements.HeroWrapper>
@@ -30,10 +30,14 @@ export const Hero = () => {
           <Elements.OrangeBox />
 
           <div>
-            {breakpoint > theme.light.breakpoints.laptop ? <img src={bike} alt="bike"/> : <img src={halfBike} alt="bike"/>}
+            {breakpoint > theme.light.breakpoints.laptop ? (
+              <img src={bike} alt="bike" />
+            ) : (
+              <img src={halfBike} alt="bike" />
+            )}
           </div>
         </Elements.HeroContainer>
       </Container>
     </Elements.HeroWrapper>
   );
-}
+};

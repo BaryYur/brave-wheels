@@ -30,7 +30,7 @@ export const Button = styled.button`
     // border: 2px solid transparent;
     opacity: 0.8;
   }
-`
+`;
 
 export const DefaultButton = styled.button`
   color: ${({ theme }) => theme.palette.brown};
@@ -60,7 +60,7 @@ export const DefaultButton = styled.button`
     // border: 2px solid transparent;
     opacity: 0.8;
   }
-`
+`;
 
 export const OutlineButton = styled.button`
   color: ${({ theme }) => theme.palette.orange};
@@ -89,7 +89,7 @@ export const OutlineButton = styled.button`
     box-shadow: 0px 4px 11px 0px rgba(130, 82, 38, 0.52);
     border: 2px solid transparent;
   }
-`
+`;
 
 export const RegularLink = styled(Link)`
   position: relative;
@@ -97,10 +97,10 @@ export const RegularLink = styled(Link)`
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  color: ${({ theme }) => theme.palette.brown}; 
+  color: ${({ theme }) => theme.palette.brown};
   &:hover {
     color: ${({ theme }) => theme.palette.orange};
-  }  
+  }
   &:hover::after {
     content: "";
     position: absolute;
@@ -110,7 +110,7 @@ export const RegularLink = styled(Link)`
     height: 1px;
     background-color: ${({ theme }) => theme.palette.orange};
   }
-`
+`;
 
 export const DefaultLink = styled(Link)`
   position: relative;
@@ -118,11 +118,11 @@ export const DefaultLink = styled(Link)`
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  color: ${({ theme }) => theme.palette.brown}; 
+  color: ${({ theme }) => theme.palette.brown};
   &:hover {
-    color: ${({theme}) => theme.palette.orange};
+    color: ${({ theme }) => theme.palette.orange};
   }
-`
+`;
 
 export const Modal = styled.div`
   padding: 40px;
@@ -132,7 +132,7 @@ export const Modal = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}px) {
     padding: 40px 20px;
   }
-`
+`;
 
 export const Input = styled.input`
   padding: 10px;
@@ -144,7 +144,7 @@ export const Input = styled.input`
   &:focus {
     border: 1px solid ${({ theme }) => theme.palette.orange};
   }
-`
+`;
 
 export const H1 = styled.h1`
   font-family: "Oswald";
@@ -155,7 +155,7 @@ export const H1 = styled.h1`
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}px) {
     font-size: 52px;
   }
-`
+`;
 
 export const H2 = styled.h2`
   font-family: "Oswald";
@@ -167,7 +167,7 @@ export const H2 = styled.h2`
     font-size: 38px;
     line-height: 38px;
   }
-`
+`;
 
 export const H3 = styled.h3`
   font-family: "Open Sans";
@@ -178,7 +178,7 @@ export const H3 = styled.h3`
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}px) {
     font-size: 24px;
   }
-`
+`;
 
 export const H4 = styled.h4`
   font-family: "Open Sans";
@@ -189,7 +189,7 @@ export const H4 = styled.h4`
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}px) {
     font-size: 20px;
   }
-`
+`;
 
 export const P = styled.p`
   font-family: "Open Sans";
@@ -200,7 +200,7 @@ export const P = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}px) {
     font-size: 16px;
   }
-`
+`;
 
 export const P2 = styled.p`
   font-family: "Open Sans";
@@ -208,4 +208,4 @@ export const P2 = styled.p`
   font-weight: 400;
   line-height: normal;
   color: ${({ theme }) => theme.palette.brown};
-`
+`;

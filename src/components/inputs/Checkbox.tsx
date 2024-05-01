@@ -2,16 +2,13 @@ import React from "react";
 
 import * as Elements from "./Elements";
 
-type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement>
+type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-export const Checkbox: React.FC<CheckboxProps> = (props) => {
+export const Checkbox: React.FC<CheckboxProps> = props => {
   return (
     <Elements.CheckboxWrapper>
-      <Elements.Checkbox
-        {...props}
-        type="checkbox"
-      />
+      <Elements.Checkbox {...props} type="checkbox" />
       <label />
     </Elements.CheckboxWrapper>
   );
-}
+};

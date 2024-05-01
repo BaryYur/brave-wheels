@@ -15,11 +15,11 @@ export const useGetMinPrice = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getMinPrice();
   }, []);
 
   return minPrice;
-}
+};

@@ -24,22 +24,53 @@ import { NAVIGATION_ITEMS } from "./data";
 
 const MenuIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-      <mask id="mask0_32_11610" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="44" height="44">
-        <rect width="44" height="44" fill="#D9D9D9"/>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="44"
+      height="44"
+      viewBox="0 0 44 44"
+      fill="none"
+    >
+      <mask
+        id="mask0_32_11610"
+        style={{ maskType: "alpha" }}
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="44"
+        height="44"
+      >
+        <rect width="44" height="44" fill="#D9D9D9" />
       </mask>
       <g mask="url(#mask0_32_11610)">
-        <path d="M8 34V30.5H36V34H8ZM8 23.5V20H36V23.5H8ZM8 13.5V10H36V13.5H8Z" fill="#453E38"/>
+        <path
+          d="M8 34V30.5H36V34H8ZM8 23.5V20H36V23.5H8ZM8 13.5V10H36V13.5H8Z"
+          fill="#453E38"
+        />
       </g>
     </svg>
   );
-}
+};
 
-const SearchIcon = ({color}: { color: string }) => {
+const SearchIcon = ({ color }: { color: string }) => {
   return (
-    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <mask id="mask0_14_9283" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="52" height="52">
-        <rect width="52" height="52" fill={color}/>
+    <svg
+      width="52"
+      height="52"
+      viewBox="0 0 52 52"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_14_9283"
+        style={{ maskType: "alpha" }}
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="52"
+        height="52"
+      >
+        <rect width="52" height="52" fill={color} />
       </mask>
       <g mask="url(#mask0_14_9283)">
         <path
@@ -49,12 +80,26 @@ const SearchIcon = ({color}: { color: string }) => {
       </g>
     </svg>
   );
-}
+};
 
-const CartIcon = ({ color } : { color: string }) => {
+const CartIcon = ({ color }: { color: string }) => {
   return (
-    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <mask id="mask0_32_9184" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="52" height="52">
+    <svg
+      width="52"
+      height="52"
+      viewBox="0 0 52 52"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_32_9184"
+        style={{ maskType: "alpha" }}
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="52"
+        height="52"
+      >
         <rect width="52" height="52" fill={color} />
       </mask>
       <g mask="url(#mask0_32_9184)">
@@ -65,7 +110,7 @@ const CartIcon = ({ color } : { color: string }) => {
       </g>
     </svg>
   );
-}
+};
 
 export const Header = () => {
   const breakpoint = useBreakpoint();
@@ -82,16 +127,14 @@ export const Header = () => {
 
     setSupportIsOpen(true);
     setSearchIsOpen(false);
-  }
+  };
 
   const openSearchHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
 
-
-
     setSearchIsOpen(true);
     setSupportIsOpen(false);
-  }
+  };
 
   useEffect(() => {
     const scrollFunction = () => {
@@ -102,7 +145,7 @@ export const Header = () => {
       } else if (window.scrollY < 20 && header) {
         header.style.boxShadow = "none";
       }
-    }
+    };
 
     window.addEventListener("scroll", scrollFunction);
 
@@ -135,38 +178,65 @@ export const Header = () => {
           </Link>
 
           <Elements.RightNav>
-            {breakpoint > breakpoints.phone ?
+            {breakpoint > breakpoints.phone ? (
               <Elements.Nav>
                 <Elements.NavList>
                   {NAVIGATION_ITEMS.map(item => (
-                    <RegularLink to={item.path} key={Math.random()} onClick={scrollToTop}>
+                    <RegularLink
+                      to={item.path}
+                      key={Math.random()}
+                      onClick={scrollToTop}
+                    >
                       <li>{item.title}</li>
                     </RegularLink>
                   ))}
                 </Elements.NavList>
 
-                <div style={{position: "relative"}}>
+                <div style={{ position: "relative" }}>
                   <Elements.SupportButton
                     onClick={openSupportHandler}
-                    style={{ color: supportIsOpen ? theme.light.palette.orange : undefined }}
-                  >Підтримка</Elements.SupportButton>
+                    style={{
+                      color: supportIsOpen
+                        ? theme.light.palette.orange
+                        : undefined,
+                    }}
+                  >
+                    Підтримка
+                  </Elements.SupportButton>
                   {supportIsOpen && <Elements.Underline />}
-                  {!searchIsOpen && <SupportItemModal isOpen={supportIsOpen}>
-                    <SupportItem />
-                  </SupportItemModal>}
+                  {!searchIsOpen && (
+                    <SupportItemModal isOpen={supportIsOpen}>
+                      <SupportItem />
+                    </SupportItemModal>
+                  )}
                 </div>
-              </Elements.Nav> : <HeaderMenu menuIsOpen={menuIsOpen} onCloseMenu={closeMenuHandler} />
-            }
+              </Elements.Nav>
+            ) : (
+              <HeaderMenu
+                menuIsOpen={menuIsOpen}
+                onCloseMenu={closeMenuHandler}
+              />
+            )}
 
             <Elements.HeaderBtns>
-             <div style={{ position: "relative" }}>
-               <Elements.SearchButton onClick={openSearchHandler}>
-                 <SearchIcon color={searchIsOpen ? theme.light.palette.orange : theme.light.palette.brown} />
-               </Elements.SearchButton>
+              <div style={{ position: "relative" }}>
+                <Elements.SearchButton onClick={openSearchHandler}>
+                  <SearchIcon
+                    color={
+                      searchIsOpen
+                        ? theme.light.palette.orange
+                        : theme.light.palette.brown
+                    }
+                  />
+                </Elements.SearchButton>
 
-               {searchIsOpen && <Elements.Underline style={{ bottom: "5px" }} />}
-               {searchIsOpen && <SearchingForm setSearchIsOpen={setSearchIsOpen} />}
-             </div>
+                {searchIsOpen && (
+                  <Elements.Underline style={{ bottom: "5px" }} />
+                )}
+                {searchIsOpen && (
+                  <SearchingForm setSearchIsOpen={setSearchIsOpen} />
+                )}
+              </div>
               <Badge
                 badgeContent={itemsInCart}
                 sx={{
@@ -176,7 +246,7 @@ export const Header = () => {
                     top: "10px",
                     right: "10px",
                     zIndex: 0,
-                  }
+                  },
                 }}
                 max={99}
               >
@@ -188,8 +258,12 @@ export const Header = () => {
           </Elements.RightNav>
         </Elements.HeaderWrapper>
 
-        {(supportIsOpen || searchIsOpen) && <Elements.SupportItemModalWrapper onClick={() => setSupportIsOpen(false)} />}
+        {(supportIsOpen || searchIsOpen) && (
+          <Elements.SupportItemModalWrapper
+            onClick={() => setSupportIsOpen(false)}
+          />
+        )}
       </Elements.Header>
     </>
   );
-}
+};

@@ -22,7 +22,7 @@ const App = () => {
         <Footer />
       </Elements.MainWrapper>
     </ThemeProvider>
-  )
-}
+  );
+};
 
 export default App;

@@ -18,12 +18,10 @@ export const SupportItem = () => {
         <Elements.SupportForm>
           <P>або</P>
           <H4>Замовити дзвінок</H4>
-          <Input
-            style={{ padding: "20px 10px" }}
-          />
+          <Input style={{ padding: "20px 10px" }} />
           <Button>Замовити</Button>
         </Elements.SupportForm>
       </Elements.SupportItemInfoItems>
     </Elements.SupportItem>
   );
-}
+};

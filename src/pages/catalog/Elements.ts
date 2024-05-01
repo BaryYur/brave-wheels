@@ -6,4 +6,4 @@ export const CatalogWrapper = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.palette.brown};
   }
-`
+`;

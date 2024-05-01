@@ -15,7 +15,7 @@ export const CheckboxWrapper = styled.div`
     left: 4px;
     top: 4px;
   }
-`
+`;
 
 export const Checkbox = styled.input`
   opacity: 0;
@@ -28,4 +28,4 @@ export const Checkbox = styled.input`
   &:checked ~ label {
     background-color: ${({ theme }) => theme.palette.orange};
   }
-`
+`;

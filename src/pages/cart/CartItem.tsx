@@ -17,7 +17,7 @@ type CartItemProps = {
   price: number;
   localQuantity: number;
   image: string;
-}
+};
 
 export const CartItem: React.FC<CartItemProps> = ({
   id,
@@ -46,7 +46,7 @@ export const CartItem: React.FC<CartItemProps> = ({
 
     localStorage.setItem("cart-items", JSON.stringify(cartItems));
     addLocalQuantity();
-  }
+  };
 
   const decreaseItemQuantityHandler = () => {
     const cartItems = JSON.parse(localStorage.getItem("cart-items") || "[]");
@@ -60,7 +60,7 @@ export const CartItem: React.FC<CartItemProps> = ({
 
     localStorage.setItem("cart-items", JSON.stringify(cartItems));
     addLocalQuantity();
-  }
+  };
 
   return (
     <li key={id}>
@@ -76,15 +76,27 @@ export const CartItem: React.FC<CartItemProps> = ({
               </H4>
               <Elements.QuantityBox>
                 <button onClick={decreaseItemQuantityHandler}>
-                  <svg width="24" height="4" viewBox="0 0 24 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24 0V4L0 4V0L24 0Z" fill="#453E38"/>
+                  <svg
+                    width="24"
+                    height="4"
+                    viewBox="0 0 24 4"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M24 0V4L0 4V0L24 0Z" fill="#453E38" />
                   </svg>
                 </button>
                 <div>
                   <P>{itemQuantity}</P>
                 </div>
                 <button onClick={increaseItemQuantityHandler}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M13.5 10.5L24 10.5V13.5L13.5 13.5L13.5 24H10.5L10.5 13.5L-3.8147e-06 13.5V10.5L10.5 10.5L10.5 0H13.5L13.5 10.5Z"
                       fill="#453E38"
@@ -95,7 +107,7 @@ export const CartItem: React.FC<CartItemProps> = ({
             </Elements.NameAndQuantityBox>
 
             <Elements.DeleteCartItemButton onClick={() => deleteCartItem(id)}>
-              <img src={deleteBtnIcon} alt="delete"/>
+              <img src={deleteBtnIcon} alt="delete" />
             </Elements.DeleteCartItemButton>
           </Elements.CartItemTopBox>
           <H4>{formattedPrice}</H4>
@@ -103,4 +115,4 @@ export const CartItem: React.FC<CartItemProps> = ({
       </Elements.CartItemWrapper>
     </li>
   );
-}
+};

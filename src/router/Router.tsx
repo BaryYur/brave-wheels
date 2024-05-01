@@ -5,8 +5,8 @@ import {
   HomePage,
   CatalogPage,
   BikePage,
-  ErrorPage,
-  AdminPage
+  NotFoundPage,
+  AdminPage,
 } from "../pages";
 
 export const Router = () => {
@@ -16,9 +16,9 @@ export const Router = () => {
       <Route path="/" element={<Navigate to="/home" replace />} />
       <Route path="catalog/*" element={<CatalogPage />} />
       <Route path="/cart" element={<CartPage />} />
-      <Route path="/*" element={<ErrorPage />} />
+      <Route path="/*" element={<NotFoundPage />} />
       <Route path="/home/bike/:id" element={<BikePage />} />
-      <Route path="/admin" element={<AdminPage />}/>
+      <Route path="/admin" element={<AdminPage />} />
     </Routes>
   );
-}
+};

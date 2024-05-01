@@ -7,11 +7,11 @@ export const Container = styled.div`
     width: 100%;
     padding: 0 20px;
   }
-`
+`;
 
 export const MainWrapper = styled.div`
   min-height: 100vh;
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-`
+`;

@@ -9,11 +9,11 @@ export const BikeItemsList = styled(Box)`
   @media screen and (max-width: 1390px) {
     grid-template-columns: repeat(3, 1fr);
   }
-`
+`;
 
 export const LoaderBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-`
+`;

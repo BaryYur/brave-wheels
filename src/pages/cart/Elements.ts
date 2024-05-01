@@ -6,8 +6,8 @@ export const CartWrapper = styled.div`
     font-size: 60px;
     text-align: center;
     color: ${({ theme }) => theme.palette.brown};
-  } 
-`
+  }
+`;
 
 export const CartItemsWrapper = styled.div`
   padding-top: 30px;
@@ -16,9 +16,9 @@ export const CartItemsWrapper = styled.div`
   }
   & ul li {
     border-top: 1px solid ${({ theme }) => theme.palette.grey};
-    padding: 30px 0; 
+    padding: 30px 0;
   }
-`
+`;
 
 export const CartItemWrapper = styled.div`
   width: 1276px;
@@ -30,7 +30,7 @@ export const CartItemWrapper = styled.div`
     padding: 0 20px;
     gap: 10px;
   }
-`
+`;
 
 export const ItemImage = styled.div`
   & img {
@@ -39,7 +39,7 @@ export const ItemImage = styled.div`
     border-radius: 10px;
     border: 1px solid ${({ theme }) => theme.palette.grey};
   }
-`
+`;
 
 export const CartItemTopBox = styled.div`
   display: flex;
@@ -55,17 +55,18 @@ export const CartItemTopBox = styled.div`
   & h4:hover a {
     opacity: 0.9;
   }
-`
+`;
 
 export const NameAndQuantityBox = styled.div`
   width: 90%;
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.bigScreen}px) {
+  @media screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.bigScreen}px) {
     flex-direction: column;
     gap: 20px;
   }
-`
+`;
 
 export const ItemInfoBox = styled.div`
   width: 100%;
@@ -75,14 +76,14 @@ export const ItemInfoBox = styled.div`
   & h4:last-child {
     color: ${({ theme }) => theme.palette.orange};
   }
-`
+`;
 
 export const QuantityBox = styled.div`
   display: flex;
   & div {
     padding: 14px 40px;
     border-top: 1px solid ${({ theme }) => theme.palette.grey};
-    border-bottom: 1px solid ${({ theme }) => theme.palette.grey}; 
+    border-bottom: 1px solid ${({ theme }) => theme.palette.grey};
     font-weight: bold;
   }
   & button {
@@ -98,7 +99,7 @@ export const QuantityBox = styled.div`
   & button:last-child {
     border-radius: 0 5px 5px 0;
   }
-`
+`;
 
 export const PayBox = styled.div`
   display: flex;
@@ -110,12 +111,11 @@ export const PayBox = styled.div`
   & h4 {
     display: flex;
     gap: 70px;
-    
   }
   & h4 span {
     color: ${({ theme }) => theme.palette.orange};
   }
-`
+`;
 
 export const DeleteCartItemButton = styled.div`
   padding: 10px 14px;
@@ -125,9 +125,9 @@ export const DeleteCartItemButton = styled.div`
   &:hover {
     background-color: whitesmoke;
   }
-`
+`;
 
-export const LoaderBox = styled.div``
+export const LoaderBox = styled.div``;
 
 export const NoItemsBox = styled.div`
   display: flex;
@@ -145,4 +145,4 @@ export const NoItemsBox = styled.div`
       width: 100px;
     }
   }
-`
+`;

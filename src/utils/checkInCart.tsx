@@ -1,5 +1,5 @@
 export const checkInCart = (id: string) => {
-  const cartItems = JSON.parse(localStorage.getItem("cart-items") ||  "[]");
+  const cartItems = JSON.parse(localStorage.getItem("cart-items") || "[]");
   const ids: string[] = [];
 
   for (const item of cartItems) {
@@ -7,4 +7,4 @@ export const checkInCart = (id: string) => {
   }
 
   return ids.includes(id);
-}
+};

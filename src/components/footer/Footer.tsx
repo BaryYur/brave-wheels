@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import { Accordion } from "./accordion/Accordion";
 import { P, H4 } from "../../theme";
 
-import { BIKES_INFO, CLIENTS_INFO, INFORMATION, TELEPHONE_CONTACT } from "./data";
+import {
+  BIKES_INFO,
+  CLIENTS_INFO,
+  INFORMATION,
+  TELEPHONE_CONTACT,
+} from "./data";
 
 import * as Elements from "./Elements";
 
@@ -45,7 +50,7 @@ export const Footer = () => {
             </div>
 
             <div>
-              <H4 style={{fontWeight: "600", color: "white"}}>Клієнтам</H4>
+              <H4 style={{ fontWeight: "600", color: "white" }}>Клієнтам</H4>
               <Elements.LinksList>
                 {CLIENTS_INFO.map(item => (
                   <li key={Math.random()}>
@@ -67,21 +72,25 @@ export const Footer = () => {
 
         <Elements.ContactBox>
           <div>
-            <H4 style={{color: "white"}}>{TELEPHONE_CONTACT}</H4>
-            <P style={{color: "white", marginTop: "20px"}}>Оформлення замовлення:</P>
-            <P style={{color: "white" }}>9:00 - 21:00</P>
+            <H4 style={{ color: "white" }}>{TELEPHONE_CONTACT}</H4>
+            <P style={{ color: "white", marginTop: "20px" }}>
+              Оформлення замовлення:
+            </P>
+            <P style={{ color: "white" }}>9:00 - 21:00</P>
           </div>
           <div>
-            <H4 style={{color: "white"}}>{TELEPHONE_CONTACT}</H4>
-            <P style={{color: "white", marginTop: "20px"}}>Служба підтримки:</P>
-            <P style={{color: "white" }}>9:00 - 21:00</P>
+            <H4 style={{ color: "white" }}>{TELEPHONE_CONTACT}</H4>
+            <P style={{ color: "white", marginTop: "20px" }}>
+              Служба підтримки:
+            </P>
+            <P style={{ color: "white" }}>9:00 - 21:00</P>
           </div>
         </Elements.ContactBox>
       </Elements.FooterContainer>
 
       <Elements.FooterContainer>
-        <P style={{color: "white"}}>©BraveWheel 2023</P>
+        <P style={{ color: "white" }}>©BraveWheel 2023</P>
       </Elements.FooterContainer>
     </Elements.Footer>
   );
-}
+};

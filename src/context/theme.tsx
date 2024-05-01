@@ -7,7 +7,7 @@ import { IThemeContext } from "../types";
 import { defaultTheme } from "../theme";
 
 const context: IThemeContext = {
-  theme: defaultTheme
-}
+  theme: defaultTheme,
+};
 
 export const ThemeContext = createContext(context);

@@ -16,18 +16,22 @@ type CartContextTypes = {
   getAllItemsPrice: () => void;
   allItemsPrice: number;
   loading: boolean;
-}
+};
 
 const CartContext = React.createContext({
   // @ts-ignore
-  getCartBikeItems: (ids) => {},
+  getCartBikeItems: ids => {},
   fetchingCartItems: () => {},
   // @ts-ignore
-  deleteCartItem: (id) => {},
+  deleteCartItem: id => {},
   addLocalQuantity: () => {},
 } as CartContextTypes);
 
-export const CartContextProvider = ({ children } : { children: React.ReactNode }) => {
+export const CartContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [cartBikes, setCartBikes] = useState<Bike[]>([]);
   const [cartItems, setCartItems] = useState<Bike[]>([]);
   const [allItemsPrice, setAllItemsPrice] = useState(0);
@@ -44,19 +48,24 @@ export const CartContextProvider = ({ children } : { children: React.ReactNode }
       console.log(error);
       return "error";
     }
-  }
+  };
 
   const deleteCartItem = (id: string) => {
-    const cartItems: { id: string; localQuantity: number }[] = JSON.parse(localStorage.getItem("cart-items") || "[]");
+    const cartItems: { id: string; localQuantity: number }[] = JSON.parse(
+      localStorage.getItem("cart-items") || "[]",
+    );
 
-    localStorage.setItem("cart-items",
-      JSON.stringify(cartItems.filter(item => item.id !== id)
-    ));
+    localStorage.setItem(
+      "cart-items",
+      JSON.stringify(cartItems.filter(item => item.id !== id)),
+    );
     setCartBikes(cartBikes.filter(item => item.id !== id));
-  }
+  };
 
   const addLocalQuantity = () => {
-    const localCartItems = JSON.parse(localStorage.getItem("cart-items") || "[]");
+    const localCartItems = JSON.parse(
+      localStorage.getItem("cart-items") || "[]",
+    );
     setCartItems([]);
 
     for (const item of localCartItems) {
@@ -68,7 +77,7 @@ export const CartContextProvider = ({ children } : { children: React.ReactNode }
               {
                 ...dataItem,
                 localQuantity: item.localQuantity,
-              }
+              },
             ];
           });
 
@@ -76,7 +85,7 @@ export const CartContextProvider = ({ children } : { children: React.ReactNode }
         }
       }
     }
-  }
+  };
 
   const fetchingCartItems = async () => {
     const cartItems = JSON.parse(localStorage.getItem("cart-items") || "[]");
@@ -96,8 +105,7 @@ export const CartContextProvider = ({ children } : { children: React.ReactNode }
     } finally {
       setLoading(false);
     }
-
-  }
+  };
 
   const getAllItemsPrice = () => {
     let price = 0;
@@ -107,7 +115,7 @@ export const CartContextProvider = ({ children } : { children: React.ReactNode }
     }
 
     setAllItemsPrice(price);
-  }
+  };
 
   useEffect(() => {
     fetchingCartItems();
@@ -130,6 +138,6 @@ export const CartContextProvider = ({ children } : { children: React.ReactNode }
       {children}
     </CartContext.Provider>
   );
-}
+};
 
 export default CartContext;

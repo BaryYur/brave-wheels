@@ -4,7 +4,7 @@ export const SupportItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
-`
+`;
 
 export const SupportItemModal = styled.div`
   width: 407px;
@@ -14,18 +14,18 @@ export const SupportItemModal = styled.div`
   z-index: 2;
   max-height: calc(100vh - 130px);
   overflow-y: auto;
-`
+`;
 
 export const SupportItemInfoItems = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 60px;
-`
+`;
 
 export const SupportItemInfo = styled.li`
   text-align: center;
   color: ${({ theme }) => theme.palette.brown};
-`
+`;
 
 export const SupportForm = styled.form`
   display: flex;
@@ -36,6 +36,6 @@ export const SupportForm = styled.form`
     color: ${({ theme }) => theme.palette.brown};
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    padding: 0 20px;  
+    padding: 0 20px;
   }
-`
+`;

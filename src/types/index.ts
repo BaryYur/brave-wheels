@@ -1,7 +1,7 @@
 export type ThemeType = {
   palette: object;
   gradient: string;
-}
+};
 
 export type Theme = "dark" | "light";
 
@@ -27,7 +27,7 @@ export type Bike = {
   quantity: number;
   images: string[];
   localQuantity?: number;
-}
+};
 
 export type FilterTypes = {
   search: string;
@@ -38,4 +38,4 @@ export type FilterTypes = {
   wheelSize: string[];
   frameType: string[];
   color: string;
-}
+};

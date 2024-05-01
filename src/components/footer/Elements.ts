@@ -5,14 +5,14 @@ export const Footer = styled.footer`
   ul li a p {
     color: ${({ theme }) => theme.palette.white};
   }
-`
+`;
 
 export const LinksList = styled.ul`
   padding-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-`
+`;
 
 export const FooterContainer = styled.div`
   width: 1276px;
@@ -28,7 +28,7 @@ export const FooterContainer = styled.div`
     flex-direction: column-reverse;
     gap: 30px;
   }
-`
+`;
 
 export const ContactBox = styled.div`
   div:last-child {
@@ -47,4 +47,4 @@ export const ContactBox = styled.div`
   @media screen and (max-width: 450px) {
     flex-direction: column;
   }
-`
+`;

@@ -5,7 +5,7 @@ export const SelectionWrapper = styled.div`
   padding: 40px 0;
   & h1 {
     font-size: 60px;
-    color: ${({ theme}) => theme.palette.white};
+    color: ${({ theme }) => theme.palette.white};
     text-align: center;
   }
   @media screen and (max-width: 700px) {
@@ -13,25 +13,27 @@ export const SelectionWrapper = styled.div`
       font-size: 38px;
     }
   }
-`
+`;
 
 export const SelectionBikeImgBox = styled.div`
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.bigScreen}px) {
+  @media screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.bigScreen}px) {
     display: none;
   }
-`
+`;
 
 export const SelectionBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.bigScreen}px) {
+  @media screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.bigScreen}px) {
     justify-content: center;
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: block;
   }
-`
+`;
 
 export const SelectionForm = styled.div`
   display: flex;
@@ -41,13 +43,13 @@ export const SelectionForm = styled.div`
   & h3 {
     color: ${({ theme }) => theme.palette.white};
   }
-`
+`;
 
 export const BikeTypesBox = styled.div`
   display: flex;
   gap: 20px;
   & h3 {
-    width: 200px;  
+    width: 200px;
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: column;
@@ -56,7 +58,7 @@ export const BikeTypesBox = styled.div`
       text-align: center;
     }
   }
-`
+`;
 
 export const BikeTypeItems = styled.ul`
   display: grid;
@@ -71,7 +73,7 @@ export const BikeTypeItems = styled.ul`
     width: 100%;
     display: block;
   }
-`
+`;
 
 export const BikeItemWrapper = styled.div`
   display: flex;
@@ -82,7 +84,7 @@ export const BikeItemWrapper = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     justify-content: center;
   }
-`
+`;
 
 export const WheelTypesBox = styled.div`
   display: flex;
@@ -99,7 +101,7 @@ export const WheelTypesBox = styled.div`
       width: 200px;
     }
   }
-`
+`;
 
 export const WheelTypeItems = styled.ul`
   display: flex;
@@ -107,7 +109,7 @@ export const WheelTypeItems = styled.ul`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     width: 100%;
   }
-`
+`;
 
 export const WheelItemWrapper = styled.div`
   display: flex;
@@ -116,11 +118,11 @@ export const WheelItemWrapper = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     justify-content: center;
   }
-`
+`;
 
 export const UserHeightBox = styled.div`
   & p {
-    color: ${({theme}) => theme.palette.white};
+    color: ${({ theme }) => theme.palette.white};
   }
   & div:first-child {
     display: flex;
@@ -130,7 +132,7 @@ export const UserHeightBox = styled.div`
       width: 110px;
       padding: 15px;
       font-size: 18px;
-      color: ${({theme}) => theme.palette.brown};
+      color: ${({ theme }) => theme.palette.brown};
     }
     & div:last-child {
       display: flex;
@@ -141,14 +143,14 @@ export const UserHeightBox = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     width: 100%;
   }
-`
+`;
 
 export const UserHeightTopBox = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 export const BottomButtonBox = styled.div`
   display: flex;
@@ -161,4 +163,4 @@ export const BottomButtonBox = styled.div`
       width: 100%;
     }
   }
-`
+`;

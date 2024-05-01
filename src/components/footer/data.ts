@@ -1,45 +1,45 @@
 export const BIKES_INFO = [
   {
     path: "/",
-    title: "Види велосипедів"
+    title: "Види велосипедів",
   },
   {
     path: "/catalog",
-    title: "Каталог"
+    title: "Каталог",
   },
   {
     path: "/",
-    title: "Акції"
+    title: "Акції",
   },
 ];
 
 export const INFORMATION = [
   {
     path: "/",
-    title: "Про нас"
+    title: "Про нас",
   },
   {
     path: "/catalog",
-    title: "Контакти"
+    title: "Контакти",
   },
 ];
 
 export const CLIENTS_INFO = [
   {
     path: "/",
-    title: "Доставка"
+    title: "Доставка",
   },
   {
     path: "/catalog",
-    title: "Умови оплати"
+    title: "Умови оплати",
   },
   {
     path: "/",
-    title: "Гарантія"
+    title: "Гарантія",
   },
   {
     path: "/",
-    title: "Повернення"
+    title: "Повернення",
   },
 ];
 

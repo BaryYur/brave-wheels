@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FilterBoxWrapper = styled.div`
   width: 290px;
-`
+`;
 
 export const FilterBox = styled.div`
   width: 290px;
@@ -13,7 +13,7 @@ export const FilterBox = styled.div`
   flex-direction: column;
   gap: 20px;
   color: ${({ theme }) => theme.palette.brown};
-`
+`;
 
 export const FilterBoxMenuWrapper = styled.div`
   transition: all 0.3s ease-in-out;
@@ -26,7 +26,7 @@ export const FilterBoxMenuWrapper = styled.div`
     background-color: white;
     padding: 20px;
   }
-`
+`;
 
 export const FiltersMenuWrapper = styled.div`
   position: fixed;
@@ -44,7 +44,7 @@ export const FiltersMenuWrapper = styled.div`
     background: rgba(180, 174, 170, 0.31);
     backdrop-filter: blur(4px);
   }
-`
+`;
 
 export const PriceInputBox = styled.div`
   display: flex;
@@ -61,7 +61,7 @@ export const PriceInputBox = styled.div`
     border-radius: 5px;
     border: 1px solid ${({ theme }) => theme.palette.grey};
   }
-`
+`;
 
 export const FiltersList = styled.div`
   display: flex;
@@ -70,7 +70,7 @@ export const FiltersList = styled.div`
   & p:first-child {
     font-weight: 600;
   }
-`
+`;
 
 export const FilterItem = styled.div`
   display: flex;
@@ -80,7 +80,7 @@ export const FilterItem = styled.div`
     font-family: Open Sans;
     cursor: pointer;
   }
-`
+`;
 
 export const FilterButton = styled.button`
   display: none;
@@ -99,7 +99,7 @@ export const FilterButton = styled.button`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     width: 246px;
   }
-`
+`;
 
 export const FiltersButton = styled.button`
   background-color: ${({ theme }) => theme.palette.orange};
@@ -113,4 +113,4 @@ export const FiltersButton = styled.button`
   line-height: normal;
   padding: 16px 32px;
   border-radius: 10px;
-`
+`;

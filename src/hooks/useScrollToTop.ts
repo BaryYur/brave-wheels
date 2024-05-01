@@ -4,7 +4,7 @@ export const useScrollToTop = () => {
       top: 0,
       behavior: "smooth",
     });
-  }
+  };
 
   return { scrollToTop };
-}
+};

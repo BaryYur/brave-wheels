@@ -37,7 +37,7 @@ export const SearchingBoxModal = styled.div`
     top: 130px;
     position: fixed;
   }
-`
+`;
 
 export const SearchingForm = styled.form`
   display: flex;
@@ -58,4 +58,4 @@ export const SearchingForm = styled.form`
       width: 100%;
     }
   }
-`
+`;

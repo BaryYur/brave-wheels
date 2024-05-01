@@ -9,18 +9,18 @@ export const HeroWrapper = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.phone}px) {
     height: 720px;
   }
-`
+`;
 
 export const HeroContainer = styled.div`
   position: relative;
   & div img {
     position: absolute;
-    right: 0;
     top: 100px;
     z-index: 0;
     right: -20px;
   }
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.bigScreen}px) {
+  @media screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.bigScreen}px) {
     & div img {
       width: 640px;
     }
@@ -42,7 +42,7 @@ export const HeroContainer = styled.div`
       top: 130px;
     }
   }
-`
+`;
 
 export const HeroInfo = styled.div`
   width: 580px;
@@ -74,7 +74,7 @@ export const HeroInfo = styled.div`
       width: 200px;
     }
   }
-`
+`;
 
 export const OrangeBox = styled.div`
   width: 367px;
@@ -84,7 +84,8 @@ export const OrangeBox = styled.div`
   right: 170px;
   top: 0;
   z-index: 0;
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.bigScreen}px) {  
+  @media screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.bigScreen}px) {
     width: 330px;
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
@@ -93,8 +94,8 @@ export const OrangeBox = styled.div`
     height: 700px;
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.phone}px) {
-    width: 100px;
-    right: 20px;
+    width: 150px;
+    right: -20px;
     height: 600px;
   }
-`
+`;

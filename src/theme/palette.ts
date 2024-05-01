@@ -5,4 +5,4 @@ export const palette = {
   orange: "#FF6F1E",
   lightBrown: "#7F6654",
   brown: "#453E38",
-}
+};

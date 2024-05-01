@@ -7,7 +7,7 @@ export const MenuWrapper = styled.div`
   width: 100%;
   height: 100dvh;
   z-index: 1;
-`
+`;
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   height: 100dvh;
   background: rgba(180, 174, 170, 0.31);
   backdrop-filter: blur(4px);
-`
+`;
 
 export const MenuBar = styled.div`
   background-color: ${({ theme }) => theme.palette.white};
@@ -32,9 +32,9 @@ export const MenuBar = styled.div`
   transition: all 0.3s ease-in-out;
   overflow-y: auto;
   @media screen and (max-width: 407px) {
-    width: 100%;  
+    width: 100%;
   }
-`
+`;
 
 export const MenuBarHead = styled.div`
   display: flex;
@@ -43,21 +43,21 @@ export const MenuBarHead = styled.div`
   & img {
     width: 219px;
   }
-`
+`;
 
-export const Navigation= styled.ul`
+export const Navigation = styled.ul`
   display: flex;
   flex-direction: column;
   border-top: 1px solid ${({ theme }) => theme.palette.grey};
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey};
   margin: 40px 0;
-`
+`;
 
-export const NavigationItem= styled.li`
+export const NavigationItem = styled.li`
   & a {
     display: flex;
     align-items: center;
     gap: 13px;
-    color: ${({ theme }) => theme.palette.brown}
+    color: ${({ theme }) => theme.palette.brown};
   }
-`
+`;

@@ -122,28 +122,35 @@ export const BikeItems = () => {
           // ...(breakpoint > breakpoints.tablet ? stylesForBigScreen : {}),
         }}
       >
-        {!catalogItemsLoading && currentBikes.map((item) => (
-          <li key={item.id} style={{ display: "flex" }}>
-            <BikeCard
-              id={item.id ?? ""}
-              name={item.name}
-              price={item.price}
-              image={item.images[0]}
-              bikeMainPath="/home"
-              styles={{ width: "240px", border: `1px solid ${theme.light.palette.grey}` , borderRadius: "10px" }}
-            />
-          </li>
-        ))}
+        {!catalogItemsLoading &&
+          currentBikes.map(item => (
+            <li key={item.id} style={{ display: "flex" }}>
+              <BikeCard
+                id={item.id ?? ""}
+                name={item.name}
+                price={item.price}
+                image={item.images[0]}
+                bikeMainPath="/home"
+                styles={{
+                  width: "240px",
+                  border: `1px solid ${theme.light.palette.grey}`,
+                  borderRadius: "10px",
+                }}
+              />
+            </li>
+          ))}
       </Elements.BikeItemsList>
 
       <P style={{ textAlign: "center", marginTop: "50px" }}>
-        {currentBikes.length === 0 && !catalogItemsLoading && <span>Нічого не знайдено</span>}
+        {currentBikes.length === 0 && !catalogItemsLoading && (
+          <span>Нічого не знайдено</span>
+        )}
       </P>
-      <Elements.LoaderBox style={{ minHeight: catalogItemsLoading ? "200px" : "0" }}>
-        {catalogItemsLoading &&
-          <Loader />
-        }
+      <Elements.LoaderBox
+        style={{ minHeight: catalogItemsLoading ? "200px" : "0" }}
+      >
+        {catalogItemsLoading && <Loader />}
       </Elements.LoaderBox>
     </div>
   );
-}
+};
