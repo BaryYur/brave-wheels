@@ -56,7 +56,7 @@ export const CartPage = () => {
   }, [cartItems]);
 
   return (
-    <div>
+    <div style={{ paddingBottom: "20px" }}>
       <Container>
         <Elements.CartWrapper>
           <BreadcrumbsList breadcrumbs={breadcrumbs} />
