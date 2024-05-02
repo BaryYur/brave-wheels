@@ -30,6 +30,7 @@ export const Filters = () => {
   const maxPrice = useGetMaxPrice();
   const [price, setPrice] = useState<number[]>([minPrice, maxPrice]);
   const [openFilters, setOpenFilters] = useState(false);
+  // const [resetFilters, setResetFilters] = useState(false);
 
   const [filters, setFilters] = useState<FilterTypes>({
     search: "",
@@ -150,6 +151,20 @@ export const Filters = () => {
     setOpenFilters(false);
   };
 
+  // const resetFiltersHandler = () => {
+  //   const queryString = window.location.search;
+  //   const params = new URLSearchParams(queryString);
+  //   const search = params.get("search") || "";
+  //
+  //   if (search !== "") {
+  //     navigate(`/catalog?search=${search}`);
+  //   } else {
+  //     navigate("/catalog");
+  //   }
+  //
+  //   setResetFilters(false);
+  // };
+
   useEffect(() => {
     setFilters({
       ...filters,
@@ -190,10 +205,15 @@ export const Filters = () => {
     const queryString = window.location.search;
     const params = new URLSearchParams(queryString);
     const page = params.get("page");
+    // const search = params.get("search") || "";
 
     if (location.search !== "" && page === null) {
       getFilteredBikes(location.search);
     }
+
+    // if (location.search !== "" && search === "") {
+    //   setResetFilters(true);
+    // }
   }, [location]);
 
   return (
@@ -206,13 +226,23 @@ export const Filters = () => {
       {
         <Elements.FilterBoxMenuWrapper
           style={{
-            left:
-              openFilters || breakpoint > breakpoints.tablet ? "0" : "-400px",
+            left: openFilters || breakpoint > breakpoints.tablet ? "0" : "-400px",
           }}
         >
           <Elements.FilterBox>
             <Elements.FiltersList>
               <P>Категорія товару</P>
+              {/*{resetFilters &&*/}
+              {/*  <div>*/}
+              {/*    <button*/}
+              {/*      style={{ fontSize: "15px", cursor: "pointer" }}*/}
+              {/*      onClick={resetFiltersHandler}*/}
+              {/*    >*/}
+              {/*      <span>Скинути фільтри</span>*/}
+              {/*      <span></span>*/}
+              {/*    </button>*/}
+              {/*  </div>*/}
+              {/*}*/}
               <Elements.FilterItem>
                 <Checkbox
                   id="mountain"

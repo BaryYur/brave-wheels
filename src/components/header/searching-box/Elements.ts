@@ -42,20 +42,31 @@ export const SearchingBoxModal = styled.div`
 export const SearchingForm = styled.form`
   display: flex;
   gap: 14px;
-  & input {
-    width: 516px;
-  }
   & button {
     width: 183px;
   }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.laptop}px) {
+    & button {
+      width: 30%;
+    }
+  }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.phone}px) {
     flex-wrap: wrap;
-    & input {
-      padding: 20px 10px;
-      width: 100%;
-    }
     & button {
       width: 100%;
     }
+  }
+`;
+
+export const InputBox = styled.div`
+  display: flex;
+  position: relative;
+  width: 70%;
+  & input {
+    width: 546px;
+    padding: 20px 40px 20px 12px;
+  }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.phone}px) {
+    width: 100%;
   }
 `;

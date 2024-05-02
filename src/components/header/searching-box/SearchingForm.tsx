@@ -98,12 +98,11 @@ export const SearchingForm = ({
     <Elements.SearchingBoxModal onClick={event => event.stopPropagation()}>
       <Modal>
         <Elements.SearchingForm onSubmit={submitSearchingHandler}>
-          <div style={{ position: "relative", display: "flex" }}>
+          <Elements.InputBox>
             <Input
               placeholder="Введіть ваш запит..."
               value={searchingText}
               onChange={event => setSearchingText(event.target.value)}
-              style={{ paddingRight: "40px" }}
             />
 
             {searchingText.length > 0 && (
@@ -125,7 +124,7 @@ export const SearchingForm = ({
                 &#10005;
               </button>
             )}
-          </div>
+          </Elements.InputBox>
           <Button type="submit">Знайти</Button>
         </Elements.SearchingForm>
         <P style={{ fontWeight: "600", marginTop: "8px" }}>Історія пошуку</P>

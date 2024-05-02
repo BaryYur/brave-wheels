@@ -12,7 +12,7 @@ import {
   ViewedBikesSlider,
 } from "../../components";
 import { BikeItems } from "./bike-items/BikeItems";
-import { DefaultLink, H2, breakpoints, theme } from "../../theme";
+import { DefaultLink, H2, P, breakpoints, theme } from "../../theme";
 import { Filters } from "./filters/Filters";
 
 import Stack from "@mui/material/Stack";
@@ -84,12 +84,16 @@ export const CatalogPage = () => {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
   const pathPage = params.get("page");
+  const searchString = params.get("search") || "";
 
   return (
     <Elements.CatalogWrapper>
       <Container styles={{ paddingBottom: "20px" }}>
         <BreadcrumbsList breadcrumbs={breadcrumbs} />
         <H2>Каталог</H2>
+        {searchString.length > 0 && <P style={{ marginTop: "15px" }}>
+          Пошук: <span style={{ fontWeight: "600" }}>{searchString}</span>
+        </P>}
 
         <div
           style={{
