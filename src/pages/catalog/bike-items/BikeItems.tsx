@@ -135,6 +135,8 @@ export const BikeItems = () => {
                   width: "240px",
                   border: `1px solid ${theme.light.palette.grey}`,
                   borderRadius: "10px",
+                  margin: "0 auto",
+                  // width: "100%"
                 }}
               />
             </li>

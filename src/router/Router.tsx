@@ -6,7 +6,7 @@ import {
   CatalogPage,
   BikePage,
   NotFoundPage,
-  AdminPage,
+  // AdminPage,
 } from "../pages";
 
 export const Router = () => {
@@ -18,7 +18,7 @@ export const Router = () => {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/*" element={<NotFoundPage />} />
       <Route path="/home/bike/:id" element={<BikePage />} />
-      <Route path="/admin" element={<AdminPage />} />
+      {/*<Route path="/admin" element={<AdminPage />} />*/}
     </Routes>
   );
 };

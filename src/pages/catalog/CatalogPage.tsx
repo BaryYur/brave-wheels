@@ -117,7 +117,6 @@ export const CatalogPage = () => {
             }}
           >
             <Pagination
-              // add all item length
               count={Math.floor(itemsCounter / 12 + 1)}
               variant="outlined"
               shape="rounded"

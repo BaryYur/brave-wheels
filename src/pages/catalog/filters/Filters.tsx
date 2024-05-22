@@ -213,7 +213,7 @@ export const Filters = () => {
 
     // if (location.search !== "" && search === "") {
     //   setResetFilters(true);
-    // }
+    //
   }, [location]);
 
   return (

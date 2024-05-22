@@ -9,6 +9,15 @@ export const BikeItemsList = styled(Box)`
   @media screen and (max-width: 1390px) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @media screen and (max-width: 770px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 770px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 527px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const LoaderBox = styled.div`
