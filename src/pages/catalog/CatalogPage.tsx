@@ -90,7 +90,7 @@ export const CatalogPage = () => {
     <Elements.CatalogWrapper>
       <Container styles={{ paddingBottom: "20px" }}>
         <BreadcrumbsList breadcrumbs={breadcrumbs} />
-        <H2>Каталог</H2>
+        <H2 style={{ marginTop: "20px" }}>Каталог</H2>
         {searchString.length > 0 && <P style={{ marginTop: "15px" }}>
           Пошук: <span style={{ fontWeight: "600" }}>{searchString}</span>
         </P>}
