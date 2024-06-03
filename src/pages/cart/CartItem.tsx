@@ -77,8 +77,6 @@ export const CartItem: React.FC<CartItemProps> = ({
               <Elements.QuantityBox>
                 <button onClick={decreaseItemQuantityHandler}>
                   <svg
-                    width="24"
-                    height="4"
                     viewBox="0 0 24 4"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -91,8 +89,6 @@ export const CartItem: React.FC<CartItemProps> = ({
                 </div>
                 <button onClick={increaseItemQuantityHandler}>
                   <svg
-                    width="24"
-                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

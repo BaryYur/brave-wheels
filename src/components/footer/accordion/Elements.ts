@@ -16,7 +16,7 @@ export const AccordionInfoBox = styled.div`
   transition: all 0.3s;
   ul {
     min-height: 0;
-    padding: 5px 0;
+    padding: 3px 0;
     display: flex;
     flex-direction: column;
     gap: 12px;

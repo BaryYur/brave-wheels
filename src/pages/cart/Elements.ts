@@ -39,6 +39,12 @@ export const ItemImage = styled.div`
     border-radius: 10px;
     border: 1px solid ${({ theme }) => theme.palette.grey};
   }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    & img {
+      width: 98px;
+      height: 98px;
+    }
+  }
 `;
 
 export const CartItemTopBox = styled.div`
@@ -55,14 +61,18 @@ export const CartItemTopBox = styled.div`
   & h4:hover a {
     opacity: 0.9;
   }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    & h4 {
+      width: 100%;
+    }
+  }
 `;
 
 export const NameAndQuantityBox = styled.div`
   width: 90%;
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.bigScreen}px) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.bigScreen}px) {
     flex-direction: column;
     gap: 20px;
   }
@@ -80,6 +90,7 @@ export const ItemInfoBox = styled.div`
 
 export const QuantityBox = styled.div`
   display: flex;
+  padding: 10px 0 20px 0;
   & div {
     padding: 14px 40px;
     border-top: 1px solid ${({ theme }) => theme.palette.grey};
@@ -98,6 +109,34 @@ export const QuantityBox = styled.div`
   }
   & button:last-child {
     border-radius: 0 5px 5px 0;
+  }
+  & button:first-child svg {
+    height: 4px;
+  }
+  & button:last-child svg {
+    height: 24px;
+  }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    & button {
+      padding: 10px 15px;
+    }
+    & button svg {
+      width: 24px;
+    }
+    & button:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+    & button:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+    & button:first-child svg {
+      height: 4px;
+      width: 20px;
+    }
+    & button:last-child svg {
+      height: 20px;
+      width: 20px;
+    }
   }
 `;
 
@@ -124,6 +163,11 @@ export const DeleteCartItemButton = styled.div`
   transition: all 0.3s ease-in-out;
   &:hover {
     background-color: whitesmoke;
+  }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    & img {
+      width: 24px;
+    } 
   }
 `;
 
